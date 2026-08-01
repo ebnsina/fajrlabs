@@ -158,7 +158,23 @@
 	nav.desktop a {
 		position: relative;
 		padding: 4px 0;
-		transition: color var(--fast) var(--ease);
+		transition:
+			color var(--fast) var(--ease),
+			opacity var(--fast) var(--ease);
+	}
+
+	/*
+	 * Pointing at one item recedes the others, so attention lands where the
+	 * pointer is. Focus-within covers the same for keyboard navigation.
+	 */
+	nav.desktop:hover a,
+	nav.desktop:focus-within a {
+		opacity: 0.4;
+	}
+
+	nav.desktop a:hover,
+	nav.desktop a:focus-visible {
+		opacity: 1;
 	}
 
 	/* Underline sweeps out from the left on hover, and stays put when active. */
@@ -326,6 +342,10 @@
 	}
 
 	@media (prefers-reduced-motion: reduce) {
+		nav.desktop a {
+			transition: none;
+		}
+
 		nav.mobile a {
 			opacity: 1;
 			animation: none;

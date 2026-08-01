@@ -18,13 +18,16 @@ export const site = {
 		'Custom software, mobile apps, plugins and practical AI automation. Built to a standard we publish, not one we claim.'
 } as const;
 
+/*
+ * Five items, in the order a buyer asks the questions: what do you do, show me,
+ * what is different, how does it work, who are you. Everything else lives in the
+ * footer — including Writing, which has nothing published yet.
+ */
 export const nav = [
 	{ href: '/services', label: 'Services' },
 	{ href: '/case-studies', label: 'Case studies' },
 	{ href: '/halal-by-design', label: 'Halal by design' },
 	{ href: '/process', label: 'Process' },
-	{ href: '/engagements', label: 'Working together' },
-	{ href: '/writing', label: 'Writing' },
 	{ href: '/about', label: 'About' }
 ] as const;
 
