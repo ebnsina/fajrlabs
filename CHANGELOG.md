@@ -7,7 +7,7 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.1] — 2026-08-01
+## [0.3.0] — 2026-08-01
 
 ### Changed
 
@@ -19,6 +19,28 @@ this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
   should not need production secrets, and preview deployments should not hold
   them. Presence is enforced where the values are used instead, so a missing
   key fails loudly at send time rather than blocking the build.
+
+## [0.2.0] — 2026-08-01
+
+Motion, added without putting the content behind it.
+
+### Added
+
+- Masked heading reveals, staggered section entrances and magnetic buttons, via GSAP
+- A custom cursor that inverts against the page and labels itself over service rows
+
+### Changed
+
+- GSAP loads on demand, so it never blocks the first paint
+
+### Notes
+
+- Motion is skipped entirely for `prefers-reduced-motion`, data-saver and 2G, and
+  runs shorter on low-core or low-memory devices
+- A 1.2s failsafe in `app.html` reveals everything if the motion script never
+  arrives, so a blocked or failed download can never leave the page blank
+- The custom cursor never initialises on touch devices, and the real pointer is
+  only hidden once ours is running
 
 ## [0.1.0] — 2026-08-01
 

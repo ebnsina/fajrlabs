@@ -8,10 +8,24 @@ export type ChangelogEntry = {
 /** Newest first. Mirrors CHANGELOG.md — keep the two in step. */
 export const changelog: ChangelogEntry[] = [
 	{
-		version: '0.1.1',
+		version: '0.3.0',
 		date: '2026-08-01',
 		summary: 'Moved to a new host.',
 		changes: [{ kind: 'Changed', note: 'The site now runs on Vercel' }]
+	},
+	{
+		version: '0.2.0',
+		date: '2026-08-01',
+		summary: 'Movement, without making you wait for it.',
+		changes: [
+			{ kind: 'Added', note: 'Headings and sections that reveal as you scroll' },
+			{ kind: 'Added', note: 'A cursor that responds to what it is over' },
+			{ kind: 'Changed', note: 'Animation loads separately, so the page appears just as fast' },
+			{
+				kind: 'Changed',
+				note: 'Movement is reduced or switched off on slower connections and devices'
+			}
+		]
 	},
 	{
 		version: '0.1.0',

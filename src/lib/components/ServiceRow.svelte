@@ -5,7 +5,7 @@
 	let { service }: { service: Service } = $props();
 </script>
 
-<a class="row" href="/services/{service.slug}">
+<a class="row" href="/services/{service.slug}" data-cursor="View">
 	<span class="mark" aria-hidden="true">
 		<HugeiconsIcon icon={serviceIcons[service.slug]} size={19} strokeWidth={1.6} />
 	</span>

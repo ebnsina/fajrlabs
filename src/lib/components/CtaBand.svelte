@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Button from './Button.svelte';
+	import { reveal, splitReveal } from '#lib/motion.js';
 	import { site } from '#lib/content/site.js';
 
 	type Props = {
@@ -16,8 +17,8 @@
 <aside>
 	<div class="inner">
 		<div class="copy">
-			<h2>{title}</h2>
-			<p>{body}</p>
+			<h2 {@attach splitReveal({ unit: 'words', stagger: 0.03 })}>{title}</h2>
+			<p {@attach reveal({ delay: 120 })}>{body}</p>
 		</div>
 		<div class="actions">
 			<Button href="/contact" withArrow>Start a project</Button>

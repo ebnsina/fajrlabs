@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import { HugeiconsIcon, ArrowRight02Icon } from '#lib/icons.js';
+	import { magnetic } from '#lib/motion.js';
 
 	type Props = {
 		href?: string;
@@ -33,9 +34,18 @@
 {/snippet}
 
 {#if href}
-	<a class="btn {variant}" class:has-arrow={withArrow} {href}>{@render inner()}</a>
+	<a class="btn {variant}" class:has-arrow={withArrow} {href} {@attach magnetic()}>
+		{@render inner()}
+	</a>
 {:else}
-	<button class="btn {variant}" class:has-arrow={withArrow} {type} {disabled} {onclick}>
+	<button
+		class="btn {variant}"
+		class:has-arrow={withArrow}
+		{type}
+		{disabled}
+		{onclick}
+		{@attach magnetic()}
+	>
 		{@render inner()}
 	</button>
 {/if}
