@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { reveal, splitReveal } from '#lib/motion.js';
 
 	type Props = {
 		eyebrow: string;
@@ -15,9 +16,13 @@
 	<div class="rail">
 		<span class="label">{eyebrow}</span>
 		<div class="content">
-			<h1>{title}</h1>
-			{#if standfirst}<p class="standfirst">{standfirst}</p>{/if}
-			{#if actions}<div class="actions">{@render actions()}</div>{/if}
+			<h1 {@attach splitReveal({ unit: 'words', onLoad: true, stagger: 0.022 })}>{title}</h1>
+			{#if standfirst}
+				<p class="standfirst" {@attach reveal({ delay: 140 })}>{standfirst}</p>
+			{/if}
+			{#if actions}
+				<div class="actions" {@attach reveal({ delay: 200 })}>{@render actions()}</div>
+			{/if}
 		</div>
 	</div>
 </header>
@@ -58,7 +63,6 @@
 		font-stretch: 86%;
 		letter-spacing: -0.032em;
 		line-height: 1.02;
-		animation: rise var(--slow) var(--ease) both;
 	}
 
 	.standfirst {
@@ -66,7 +70,6 @@
 		max-width: 52ch;
 		font-size: clamp(15.5px, 1.5vw, 18px);
 		color: var(--muted);
-		animation: rise var(--slow) var(--ease) 70ms both;
 	}
 
 	.actions {
@@ -74,21 +77,5 @@
 		flex-wrap: wrap;
 		gap: 10px;
 		margin-top: 30px;
-		animation: rise var(--slow) var(--ease) 140ms both;
-	}
-
-	@keyframes rise {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		h1,
-		.standfirst,
-		.actions {
-			animation: none;
-		}
 	}
 </style>

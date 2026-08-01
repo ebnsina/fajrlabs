@@ -4,7 +4,7 @@
 	import Button from '#lib/components/Button.svelte';
 	import ServiceRow from '#lib/components/ServiceRow.svelte';
 	import CtaBand from '#lib/components/CtaBand.svelte';
-	import { reveal } from '#lib/motion.js';
+	import { reveal, splitReveal } from '#lib/motion.js';
 	import { HugeiconsIcon, Tick02Icon, Cancel01Icon } from '#lib/icons.js';
 	import { site } from '#lib/content/site.js';
 	import { services } from '#lib/content/services.js';
@@ -18,12 +18,14 @@
 	<div class="rail">
 		<span class="label">What we do</span>
 		<div>
-			<h1>Software built to a standard, <em>not to a brief.</em></h1>
-			<p class="sub">
+			<h1 {@attach splitReveal({ unit: 'chars', stagger: 0.009, onLoad: true })}>
+				Software built to a standard, <em>not to a brief.</em>
+			</h1>
+			<p class="sub" {@attach reveal({ delay: 150 })}>
 				Custom software, mobile apps, plugins and practical automation. Built to a standard we
 				publish, not one we claim.
 			</p>
-			<div class="actions">
+			<div class="actions" {@attach reveal({ delay: 230 })}>
 				<Button href="/contact" withArrow>Start a project</Button>
 				<Button href="/halal-by-design" variant="ghost">Read our standard</Button>
 			</div>
@@ -32,7 +34,7 @@
 </section>
 
 <Section label="What we build" labelAlign="display">
-	<div {@attach reveal()}>
+	<div {@attach reveal({ children: true })}>
 		{#each services as service (service.slug)}
 			<ServiceRow {service} />
 		{/each}
@@ -40,15 +42,17 @@
 </Section>
 
 <Section label="The standard" labelAlign="display">
-	<div class="standard-intro" {@attach reveal()}>
-		<h2>We wrote the line down, so nobody has to guess.</h2>
+	<div class="standard-intro">
+		<h2 {@attach splitReveal({ unit: 'words', stagger: 0.03 })}>
+			We wrote the line down, so nobody has to guess.
+		</h2>
 		<p>
 			Every enquiry meets the same test, including the well-funded ones. Some we turn down. That is
 			the point.
 		</p>
 	</div>
 
-	<div class="standard" {@attach reveal({ delay: 80 })}>
+	<div class="standard" {@attach reveal({ delay: 60 })}>
 		<div class="column">
 			<span class="col-label">Work we take on</span>
 			<ul>
@@ -77,7 +81,7 @@
 </Section>
 
 <Section label="How we work">
-	<ol class="process" {@attach reveal()}>
+	<ol class="process" {@attach reveal({ children: true })}>
 		{#each process.steps as step, index (step.title)}
 			<li>
 				<span class="step-number">{String(index + 1).padStart(2, '0')}</span>
@@ -130,7 +134,6 @@
 		font-stretch: 86%;
 		letter-spacing: -0.038em;
 		line-height: 0.97;
-		animation: rise var(--slow) var(--ease) both;
 	}
 
 	/* Contrast comes from weight, not colour — the family runs 200–900. */
@@ -146,7 +149,6 @@
 		max-width: 50ch;
 		font-size: clamp(15.5px, 1.5vw, 18px);
 		color: var(--muted);
-		animation: rise var(--slow) var(--ease) 80ms both;
 	}
 
 	.actions {
@@ -154,7 +156,6 @@
 		flex-wrap: wrap;
 		gap: 10px;
 		margin-top: 32px;
-		animation: rise var(--slow) var(--ease) 160ms both;
 	}
 
 	.standard-intro h2 {
@@ -282,20 +283,5 @@
 	.more:hover,
 	.more:focus-visible {
 		border-color: var(--ink);
-	}
-
-	@keyframes rise {
-		from {
-			opacity: 0;
-			transform: translateY(12px);
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		h1,
-		.sub,
-		.actions {
-			animation: none;
-		}
 	}
 </style>

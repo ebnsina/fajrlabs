@@ -3,6 +3,7 @@
 	import { onNavigate } from '$app/navigation';
 	import SiteHeader from '#lib/components/SiteHeader.svelte';
 	import SiteFooter from '#lib/components/SiteFooter.svelte';
+	import Cursor from '#lib/components/Cursor.svelte';
 
 	let { children } = $props();
 
@@ -20,6 +21,7 @@
 </script>
 
 <a class="skip" href="#main">Skip to content</a>
+<Cursor />
 <SiteHeader />
 <main id="main">{@render children()}</main>
 <SiteFooter />
