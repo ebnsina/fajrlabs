@@ -7,6 +7,15 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0] — 2026-08-02
+
+### Added
+
+- A Work section: an index and a write-up per project, in the main nav and the
+  footer. The first entry is Safar, a travel booking product the studio is
+  building. Written as the problem it solves and the decisions taken, not as a
+  list of technology, and it states plainly that it is not live.
+
 ## [0.6.0] — 2026-08-01
 
 ### Added

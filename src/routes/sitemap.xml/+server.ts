@@ -1,11 +1,13 @@
 import { site } from '#lib/content/site.js';
 import { services } from '#lib/content/services.js';
 import { publishedPosts } from '#lib/content/posts.js';
+import { work } from '#lib/content/work.js';
 import type { RequestHandler } from './$types';
 
 const staticPaths = [
 	'/',
 	'/services',
+	'/work',
 	'/halal-by-design',
 	'/process',
 	'/engagements',
@@ -20,7 +22,8 @@ export const GET: RequestHandler = () => {
 	const paths = [
 		...staticPaths,
 		...services.map((service) => `/services/${service.slug}`),
-		...publishedPosts.map((post) => `/writing/${post.slug}`)
+		...publishedPosts.map((post) => `/writing/${post.slug}`),
+		...work.map((item) => `/work/${item.slug}`)
 	];
 
 	const urls = paths
