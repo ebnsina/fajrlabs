@@ -22,9 +22,14 @@ pnpm dev
 
 ## Configuration
 
-Environment variables are declared in `src/env.ts`, each with its own schema.
-There are no defaults and no fallbacks — if a value is missing or malformed the
-request fails loudly rather than silently dropping an enquiry.
+Environment variables are declared in `src/env.ts` and supplied at runtime.
+There are no defaults and no fallbacks anywhere.
+
+The build deliberately does **not** require them: compiling the site should not
+need production secrets, and preview deployments should not hold them. Presence
+is enforced at the point of use in `src/lib/server/email.ts`, which throws
+rather than sending nothing. A missing key means enquiries fail loudly in the
+logs while the visitor sees a plain apology and your email address.
 
 | Variable             | Used for                                               |
 | -------------------- | ------------------------------------------------------ |
@@ -96,9 +101,10 @@ build settings need changing:
 | Install command  | `pnpm install` |
 | Output directory | (leave blank)  |
 
-Add the three environment variables before the first deploy, otherwise the
-enquiry form will fail loudly on its first submission — by design, rather than
-silently dropping the message.
+The build succeeds without the environment variables, so a first deploy will
+not be blocked. Add them before you point real traffic at the site, though —
+until they are set, every enquiry is logged as a failure and the visitor is
+asked to email instead.
 
 Every branch gets its own preview URL, which is how the two design directions
 can be compared: `main` is the still version, `motion` adds the animation.
