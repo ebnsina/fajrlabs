@@ -8,6 +8,12 @@ export type ChangelogEntry = {
 /** Newest first. Mirrors CHANGELOG.md — keep the two in step. */
 export const changelog: ChangelogEntry[] = [
 	{
+		version: '0.1.1',
+		date: '2026-08-01',
+		summary: 'Moved to a new host.',
+		changes: [{ kind: 'Changed', note: 'The site now runs on Vercel' }]
+	},
+	{
 		version: '0.1.0',
 		date: '2026-08-01',
 		summary: 'First public version of the site.',
