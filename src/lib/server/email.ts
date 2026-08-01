@@ -3,6 +3,34 @@ import { RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL } from '$app/env/p
 import { serviceLabel, type Enquiry } from '#lib/schemas/enquiry.js';
 import { site } from '#lib/content/site.js';
 
+export class ConfigurationError extends Error {
+	constructor(missing: string[]) {
+		super(`Enquiries cannot be sent. Missing configuration: ${missing.join(', ')}`);
+		this.name = 'ConfigurationError';
+	}
+}
+
+/** The single place configuration is checked. No defaults, no fallbacks. */
+function requireConfig() {
+	const config = {
+		apiKey: RESEND_API_KEY,
+		to: CONTACT_TO_EMAIL,
+		from: CONTACT_FROM_EMAIL
+	};
+
+	const missing = Object.entries({
+		RESEND_API_KEY,
+		CONTACT_TO_EMAIL,
+		CONTACT_FROM_EMAIL
+	})
+		.filter(([, value]) => !value?.trim())
+		.map(([name]) => name);
+
+	if (missing.length > 0) throw new ConfigurationError(missing);
+
+	return config as { apiKey: string; to: string; from: string };
+}
+
 export class EmailDeliveryError extends Error {
 	constructor(reason: string) {
 		super(`Resend rejected the message: ${reason}`);
@@ -50,11 +78,12 @@ function toText(enquiry: Enquiry): string {
 }
 
 export async function sendEnquiry(enquiry: Enquiry): Promise<void> {
-	const resend = new Resend(RESEND_API_KEY);
+	const config = requireConfig();
+	const resend = new Resend(config.apiKey);
 
 	const { error } = await resend.emails.send({
-		from: CONTACT_FROM_EMAIL,
-		to: CONTACT_TO_EMAIL,
+		from: config.from,
+		to: config.to,
 		replyTo: enquiry.email,
 		subject: `${site.name} enquiry — ${enquiry.name} (${serviceLabel(enquiry.service)})`,
 		html: toHtml(enquiry),

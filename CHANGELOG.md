@@ -15,6 +15,10 @@ this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
   Wrangler, the generated worker types and the Cloudflare `App.Platform`
   bindings are all removed; environment variables now come from the Vercel
   project settings.
+- Environment variables are no longer required to build. Compiling the site
+  should not need production secrets, and preview deployments should not hold
+  them. Presence is enforced where the values are used instead, so a missing
+  key fails loudly at send time rather than blocking the build.
 
 ## [0.1.0] — 2026-08-01
 
