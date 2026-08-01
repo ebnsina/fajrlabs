@@ -9,7 +9,7 @@ export type Engagement = {
 
 export const engagements = {
 	standfirst:
-		'Three ways to work with us. We will tell you which one fits, including when it is the smallest.',
+		'Two ways to work with us. We will tell you which one fits, including when it is the smaller.',
 	options: [
 		{
 			name: 'A project, fixed price',
@@ -27,31 +27,17 @@ export const engagements = {
 		},
 		{
 			name: 'Ongoing support',
-			bestFor: 'Something is already live',
+			bestFor: 'We built it, it is live',
 			summary:
-				'A set number of days each month for fixes and improvements. Unused days roll over once, so a quiet month is not wasted money.',
+				'A set number of days each month for fixes and improvements, for work we built ourselves. Unused days roll over once, so a quiet month is not wasted money.',
 			includes: [
-				'A named person who knows your system',
+				'The people who built it, still looking after it',
 				'Agreed response times for anything urgent',
 				'Small improvements as you think of them',
 				'A short written summary each month'
 			],
 			commitment: 'Monthly. Thirty days’ notice to stop.',
 			billing: 'A flat monthly fee, agreed up front.'
-		},
-		{
-			name: 'Alongside your team',
-			bestFor: 'You have developers',
-			summary:
-				'We join your team, use your tools, follow your standards. For when you are short-handed for a stretch and would rather not hire for it.',
-			includes: [
-				'Full-time or part-time',
-				'Your hours, your meetings',
-				'Your standards and your review process',
-				'A clean exit whenever you are done'
-			],
-			commitment: 'A month at a time, usually three or more.',
-			billing: 'A day rate, invoiced monthly for days used.'
 		}
 	] satisfies Engagement[],
 	pricingNote:

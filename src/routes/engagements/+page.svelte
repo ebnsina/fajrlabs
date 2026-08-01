@@ -9,12 +9,12 @@
 
 <Seo
 	title="Working together"
-	description="Three ways to work with us: a fixed-price project, ongoing monthly support, or working alongside your own team."
+	description="Two ways to work with us: a fixed-price project, or ongoing monthly support for work we have built."
 />
 
 <PageHeader
 	eyebrow="Working together"
-	title="Three ways to work with us."
+	title="Two ways to work with us."
 	standfirst={engagements.standfirst}
 />
 
@@ -70,7 +70,7 @@
 	   across all three columns, whatever the copy length. */
 	@media (min-width: 900px) {
 		.options {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 			grid-template-rows: auto auto auto 1fr auto;
 			gap: 0;
 		}

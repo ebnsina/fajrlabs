@@ -7,6 +7,17 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.1] — 2026-08-01
+
+### Removed
+
+- "Alongside your team" as an engagement. The studio does not join other
+  people's teams; the option was written in error and is gone.
+
+### Changed
+
+- Ongoing support now says plainly that it covers work the studio built itself
+
 ## [0.5.0] — 2026-08-01
 
 ### Fixed
