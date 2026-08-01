@@ -23,7 +23,8 @@
 <a class="skip" href="#main">Skip to content</a>
 <Cursor />
 <SiteHeader />
-<main id="main">{@render children()}</main>
+<!-- tabindex makes the skip link actually move focus, not just scroll. -->
+<main id="main" tabindex="-1">{@render children()}</main>
 <SiteFooter />
 
 <style>
@@ -32,8 +33,14 @@
 		min-height: 60vh;
 	}
 
+	/* The skip link and the scroll are the cue; a ring round the whole page is not. */
+	main:focus {
+		outline: none;
+	}
+
+	/* Fixed rather than absolute, so it is reachable part-way down a page too. */
 	.skip {
-		position: absolute;
+		position: fixed;
 		left: -9999px;
 		z-index: 60;
 		padding: 12px 18px;

@@ -22,13 +22,14 @@
 			const moveY = gsap.quickTo(dot, 'y', { duration: 0.16, ease: 'power2.out' });
 
 			gsap.set(dot, { xPercent: -50, yPercent: -50, scale: 0.32, autoAlpha: 0 });
-			document.documentElement.classList.add('has-custom-cursor');
 
 			let shown = false;
 
 			function onMove(event: PointerEvent) {
 				if (!shown) {
 					shown = true;
+					// Only now is there something to replace the native pointer with.
+					document.documentElement.classList.add('has-custom-cursor');
 					gsap.to(dot!, { autoAlpha: 1, duration: 0.2 });
 				}
 				moveX(event.clientX);
@@ -44,6 +45,7 @@
 
 			const hide = () => {
 				shown = false;
+				document.documentElement.classList.remove('has-custom-cursor');
 				gsap.to(dot!, { autoAlpha: 0, duration: 0.2 });
 			};
 			const press = () => gsap.to(dot!, { scale: label ? 0.88 : 0.22, duration: 0.16 });

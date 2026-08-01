@@ -104,14 +104,6 @@ svg {
 	max-width: 100%;
 }
 
-/*
- * Headings being split hold still for a moment so the reflow is not visible.
- * Scoped to html.motion, which a 3s failsafe removes if motion never arrives.
- */
-html.motion .split-pending {
-	visibility: hidden;
-}
-
 /* Cross-page fade, used with the View Transitions API where supported. */
 @keyframes fade-in {
 	from {

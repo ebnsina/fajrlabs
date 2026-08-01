@@ -30,7 +30,9 @@ export function reveal({
 			const targets = children ? Array.from(node.children) : node;
 			const tween = engine.gsap.from(targets, {
 				y,
-				autoAlpha: 0,
+				// Opacity, never autoAlpha: visibility:hidden drops anything below the
+				// fold out of the tab order and the accessibility tree until scrolled to.
+				opacity: 0,
 				duration: 0.7 * engine.scale,
 				ease: 'power3.out',
 				delay: delay / 1000,
@@ -52,58 +54,52 @@ export function reveal({
 }
 
 type SplitOptions = {
-	unit?: 'chars' | 'words' | 'lines';
-	stagger?: number;
 	delay?: number;
 	/** Runs straight away rather than waiting for the element to be scrolled to. */
 	onLoad?: boolean;
 };
 
 /**
- * Masked line-by-line reveal. The element keeps its own markup, so nested
- * emphasis and its styling survive the split.
+ * Heading reveal.
+ *
+ * This used SplitText with masked lines. Two problems made that unshippable:
+ * the masks clip descenders on tight display line-heights, and `autoSplit`
+ * re-splitting on font load kills the in-flight tween and strands characters
+ * part-way through their travel — leaving headings visibly cut in half.
+ *
+ * Until that is solved properly it lifts the whole heading instead, which is
+ * quieter but always correct. The signature is unchanged so callers need not.
  */
 export function splitReveal({
-	unit = 'words',
-	stagger = 0.04,
 	delay = 0,
 	onLoad = false
 }: SplitOptions = {}): Attachment<HTMLElement> {
 	return (node) => {
 		if (getMotionLevel() === 'none') return;
 
-		node.classList.add('split-pending');
-
 		let cleanup: (() => void) | undefined;
 		let cancelled = false;
 
 		loadEngine().then((engine) => {
-			if (cancelled) return;
-			node.classList.remove('split-pending');
-			if (!engine) return;
+			if (!engine || cancelled) return;
 
-			const split = engine.SplitText.create(node, {
-				type: `lines,${unit}`,
-				mask: 'lines',
-				autoSplit: true,
-				onSplit(self) {
-					return engine.gsap.from(self[unit], {
-						yPercent: 110,
-						duration: 0.8 * engine.scale,
-						ease: 'power4.out',
-						stagger: stagger * engine.scale,
-						delay: delay / 1000,
-						scrollTrigger: onLoad ? undefined : { trigger: node, start: 'top 88%', once: true }
-					});
-				}
+			const tween = engine.gsap.from(node, {
+				y: 26,
+				opacity: 0,
+				duration: 0.9 * engine.scale,
+				ease: 'power3.out',
+				delay: delay / 1000,
+				scrollTrigger: onLoad ? undefined : { trigger: node, start: 'top 88%', once: true }
 			});
 
-			cleanup = () => split.revert();
+			cleanup = () => {
+				tween.scrollTrigger?.kill();
+				tween.kill();
+			};
 		});
 
 		return () => {
 			cancelled = true;
-			node.classList.remove('split-pending');
 			cleanup?.();
 		};
 	};

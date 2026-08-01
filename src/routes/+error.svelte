@@ -97,6 +97,27 @@
 		text-transform: uppercase;
 		color: var(--faint);
 		padding-top: 12px;
+		opacity: 0;
+		transition: opacity 0.35s var(--ease);
+	}
+
+	/* Focus-within keeps the label reachable when tabbing rather than pointing. */
+	section:hover .label,
+	section:focus-within .label {
+		opacity: 1;
+	}
+
+	/* Nothing hovers on a touch screen, so the label simply stays. */
+	@media (hover: none), (pointer: coarse) {
+		.label {
+			opacity: 1;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.label {
+			transition: none;
+		}
 	}
 
 	h1 {

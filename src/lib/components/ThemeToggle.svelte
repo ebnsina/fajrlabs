@@ -5,10 +5,13 @@
 	const isDark = $derived(theme.current === 'dark');
 </script>
 
+<!--
+	No aria-pressed: the label already names the action, and "switch to dark …
+	pressed" contradicts itself. One or the other, never both.
+-->
 <button
 	type="button"
 	onclick={() => theme.toggle()}
-	aria-pressed={isDark}
 	title={isDark ? 'Switch to light appearance' : 'Switch to dark appearance'}
 >
 	<span class="icon" aria-hidden="true">
@@ -25,6 +28,7 @@
 
 <style>
 	button {
+		position: relative;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -43,6 +47,15 @@
 	button:hover {
 		color: var(--ink);
 		border-color: var(--rule-strong);
+	}
+
+	/* Grows the tap area into the surrounding gap without moving the drawn box. */
+	@media (pointer: coarse) {
+		button::before {
+			content: '';
+			position: absolute;
+			inset: -5px -4px;
+		}
 	}
 
 	.icon {

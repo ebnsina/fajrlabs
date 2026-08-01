@@ -6,11 +6,25 @@
 	import CtaBand from '#lib/components/CtaBand.svelte';
 	import { reveal } from '#lib/motion.js';
 	import { faqGroups } from '#lib/content/faq.js';
+
+	const faqSchema = [
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqGroups.flatMap((group) =>
+				group.items.map((item) => ({
+					'@type': 'Question',
+					name: item.question,
+					acceptedAnswer: { '@type': 'Answer', text: item.answer }
+				}))
+			)
+		}
+	];
 </script>
 
 <Seo
 	title="Common questions"
 	description="Straight answers about how we price work, how long things take, who owns what we build, and the standard we hold every project to."
+	schema={faqSchema}
 />
 
 <PageHeader

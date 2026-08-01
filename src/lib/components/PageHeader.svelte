@@ -16,7 +16,9 @@
 	<div class="rail">
 		<span class="label">{eyebrow}</span>
 		<div class="content">
-			<h1 {@attach splitReveal({ unit: 'words', onLoad: true, stagger: 0.022 })}>{title}</h1>
+			<h1 {@attach splitReveal({ onLoad: true })}>
+				{title}
+			</h1>
 			{#if standfirst}
 				<p class="standfirst" {@attach reveal({ delay: 140 })}>{standfirst}</p>
 			{/if}
@@ -55,6 +57,27 @@
 		text-transform: uppercase;
 		color: var(--faint);
 		padding-top: 12px;
+		opacity: 0;
+		transition: opacity 0.35s var(--ease);
+	}
+
+	/* Focus-within keeps the label reachable when tabbing rather than pointing. */
+	.page-header:hover .label,
+	.page-header:focus-within .label {
+		opacity: 1;
+	}
+
+	/* Nothing hovers on a touch screen, so the label simply stays. */
+	@media (hover: none), (pointer: coarse) {
+		.label {
+			opacity: 1;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.label {
+			transition: none;
+		}
 	}
 
 	h1 {

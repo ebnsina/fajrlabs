@@ -14,10 +14,11 @@
 	}: Props = $props();
 </script>
 
-<aside>
+<!-- A div, not an aside: this is the page's closing ask, not tangential matter. -->
+<div class="band">
 	<div class="inner">
 		<div class="copy">
-			<h2 {@attach splitReveal({ unit: 'words', stagger: 0.03 })}>{title}</h2>
+			<h2 {@attach splitReveal()}>{title}</h2>
 			<p {@attach reveal({ delay: 120 })}>{body}</p>
 		</div>
 		<div class="actions">
@@ -25,10 +26,10 @@
 			<a class="mail" href="mailto:{site.email}">{site.email}</a>
 		</div>
 	</div>
-</aside>
+</div>
 
 <style>
-	aside {
+	.band {
 		background: var(--surface);
 	}
 

@@ -9,9 +9,18 @@
 		type?: 'website' | 'article';
 		publishedAt?: string;
 		noindex?: boolean;
+		/** Extra JSON-LD for this page, on top of the sitewide organisation entry. */
+		schema?: Record<string, unknown>[];
 	};
 
-	let { title, description, type = 'website', publishedAt, noindex = false }: Props = $props();
+	let {
+		title,
+		description,
+		type = 'website',
+		publishedAt,
+		noindex = false,
+		schema = []
+	}: Props = $props();
 
 	// The home page uses the bare brand name; every other page is suffixed.
 	const fullTitle = $derived(
@@ -19,6 +28,45 @@
 	);
 	const canonical = $derived(new URL(page.url.pathname, site.url).href);
 	const ogImage = $derived(new URL('/og.png', site.url).href);
+
+	const baseSchema = $derived([
+		{
+			'@type': 'Organization',
+			'@id': `${site.url}/#organization`,
+			name: site.name,
+			url: site.url,
+			email: site.email,
+			description: site.description,
+			foundingDate: site.founded,
+			logo: new URL('/icon-512.png', site.url).href,
+			// The studio's defining characteristic, stated where machines can read it.
+			knowsAbout: [
+				'Custom software development',
+				'Mobile app development',
+				'Software plugins and extensions',
+				'Practical AI automation',
+				'Halal-compliant software development'
+			]
+		},
+		{
+			'@type': 'WebSite',
+			'@id': `${site.url}/#website`,
+			url: site.url,
+			name: site.name,
+			description: site.description,
+			publisher: { '@id': `${site.url}/#organization` },
+			inLanguage: 'en-GB'
+		}
+	]);
+
+	// Escaping every `<` stops a closing script tag inside any value from
+	// terminating the block early.
+	const jsonLd = $derived(
+		JSON.stringify({
+			'@context': 'https://schema.org',
+			'@graph': [...baseSchema, ...schema]
+		}).replace(/</g, '\\u003c')
+	);
 </script>
 
 <svelte:head>
@@ -35,6 +83,7 @@
 	<meta property="og:description" content={description} />
 	<meta property="og:url" content={canonical} />
 	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:alt" content="{site.name} — {site.tagline}" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta property="og:locale" content="en_GB" />
@@ -46,4 +95,8 @@
 	<meta name="twitter:title" content={fullTitle} />
 	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:image:alt" content="{site.name} — {site.tagline}" />
+
+	<!-- eslint-disable-next-line svelte/no-at-html-tags, no-useless-escape -- jsonLd is JSON.stringify output with every `<` escaped, so it cannot carry markup; the closing tag must stay escaped or it terminates this block -->
+	{@html `<script type="application/ld+json">${jsonLd}<\/script>`}
 </svelte:head>

@@ -7,14 +7,26 @@
 	import CtaBand from '#lib/components/CtaBand.svelte';
 	import { reveal } from '#lib/motion.js';
 	import { services } from '#lib/content/services.js';
+	import { site } from '#lib/content/site.js';
 
 	let { data } = $props();
 
 	const service = $derived(data.service);
 	const others = $derived(services.filter((item) => item.slug !== service.slug));
+
+	const serviceSchema = $derived([
+		{
+			'@type': 'Service',
+			name: service.name,
+			description: service.lead,
+			serviceType: service.name,
+			provider: { '@id': `${site.url}/#organization` },
+			areaServed: 'Worldwide'
+		}
+	]);
 </script>
 
-<Seo title={service.name} description={service.oneLine} />
+<Seo title={service.name} description={service.oneLine} schema={serviceSchema} />
 
 <PageHeader eyebrow="Services" title={service.name} standfirst={service.oneLine}>
 	{#snippet actions()}

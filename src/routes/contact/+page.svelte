@@ -38,17 +38,28 @@
 				<div class="field">
 					<label for="name">Your name</label>
 					{#if fields.name.issues()?.[0]}
-						<p class="issue">{fields.name.issues()?.[0].message}</p>
+						<p class="issue" id="name-issue">{fields.name.issues()?.[0].message}</p>
 					{/if}
-					<input id="name" autocomplete="name" {...fields.name.as('text')} />
+					<!-- describedby follows the spread so the field's own attributes cannot drop it. -->
+					<input
+						id="name"
+						autocomplete="name"
+						{...fields.name.as('text')}
+						aria-describedby={fields.name.issues()?.[0] ? 'name-issue' : undefined}
+					/>
 				</div>
 
 				<div class="field">
 					<label for="email">Email</label>
 					{#if fields.email.issues()?.[0]}
-						<p class="issue">{fields.email.issues()?.[0].message}</p>
+						<p class="issue" id="email-issue">{fields.email.issues()?.[0].message}</p>
 					{/if}
-					<input id="email" autocomplete="email" {...fields.email.as('email')} />
+					<input
+						id="email"
+						autocomplete="email"
+						{...fields.email.as('email')}
+						aria-describedby={fields.email.issues()?.[0] ? 'email-issue' : undefined}
+					/>
 				</div>
 			</div>
 
@@ -56,21 +67,26 @@
 				<div class="field">
 					<label for="organisation">Organisation <span class="optional">optional</span></label>
 					{#if fields.organisation.issues()?.[0]}
-						<p class="issue">{fields.organisation.issues()?.[0].message}</p>
+						<p class="issue" id="organisation-issue">{fields.organisation.issues()?.[0].message}</p>
 					{/if}
 					<input
 						id="organisation"
 						autocomplete="organization"
 						{...fields.organisation.as('text')}
+						aria-describedby={fields.organisation.issues()?.[0] ? 'organisation-issue' : undefined}
 					/>
 				</div>
 
 				<div class="field">
 					<label for="service">What do you need?</label>
 					{#if fields.service.issues()?.[0]}
-						<p class="issue">{fields.service.issues()?.[0].message}</p>
+						<p class="issue" id="service-issue">{fields.service.issues()?.[0].message}</p>
 					{/if}
-					<select id="service" {...fields.service.as('select')}>
+					<select
+						id="service"
+						{...fields.service.as('select')}
+						aria-describedby={fields.service.issues()?.[0] ? 'service-issue' : undefined}
+					>
 						<option value="">Choose one</option>
 						{#each enquiryOptions as option (option.value)}
 							<option value={option.value}>{option.label}</option>
@@ -81,13 +97,19 @@
 
 			<div class="field">
 				<label for="message">About the project</label>
-				<p class="hint">
+				<p class="hint" id="message-hint">
 					What is going wrong today, or what you would like to exist. A few sentences is plenty.
 				</p>
 				{#if fields.message.issues()?.[0]}
-					<p class="issue">{fields.message.issues()?.[0].message}</p>
+					<p class="issue" id="message-issue">{fields.message.issues()?.[0].message}</p>
 				{/if}
-				<textarea id="message" rows="7" {...fields.message.as('text')}></textarea>
+				<textarea
+					id="message"
+					rows="7"
+					{...fields.message.as('text')}
+					aria-describedby={fields.message.issues()?.[0]
+						? 'message-issue message-hint'
+						: 'message-hint'}></textarea>
 			</div>
 
 			<div class="trap" aria-hidden="true">
@@ -233,10 +255,10 @@
 		border-color: var(--muted);
 	}
 
+	/* No outline reset here: the global focus ring has to survive on these too. */
 	input:focus,
 	select:focus,
 	textarea:focus {
-		outline: none;
 		border-color: var(--ink);
 		box-shadow: inset 0 0 0 1px var(--ink);
 	}

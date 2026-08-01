@@ -1,3 +1,6 @@
+# Everything here is public and we are happy for it to be read, indexed and
+# summarised — including by AI assistants. The studio's standard is easier to
+# follow if it is easy to find.
 User-agent: *
 Allow: /
 

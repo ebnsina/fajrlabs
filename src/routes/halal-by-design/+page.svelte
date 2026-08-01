@@ -30,7 +30,7 @@
 				<span class="mark" aria-hidden="true">
 					<HugeiconsIcon icon={Tick02Icon} size={14} strokeWidth={2.2} />
 				</span>
-				<h3>{item.title}</h3>
+				<h2>{item.title}</h2>
 				<p>{item.note}</p>
 			</li>
 		{/each}
@@ -44,7 +44,7 @@
 				<span class="mark" aria-hidden="true">
 					<HugeiconsIcon icon={Cancel01Icon} size={14} strokeWidth={2.2} />
 				</span>
-				<h3>{item.title}</h3>
+				<h2>{item.title}</h2>
 				<p>{item.note}</p>
 			</li>
 		{/each}
@@ -57,7 +57,7 @@
 			<li>
 				<span class="number">{String(index + 1).padStart(2, '0')}</span>
 				<div>
-					<h3>{item.step}</h3>
+					<h2>{item.step}</h2>
 					<p>{item.detail}</p>
 				</div>
 			</li>
@@ -137,21 +137,23 @@
 		border-top: none;
 	}
 
-	.positions h3 {
+	/* Weight is pinned because these read as h2 but must not gain display weight. */
+	.positions h2 {
 		margin: 0;
 		font-size: 18.5px;
+		font-weight: 600;
 		font-stretch: 92%;
 		letter-spacing: -0.016em;
 	}
 
-	.decline h3 {
+	.decline h2 {
 		color: var(--muted);
 		text-decoration: line-through;
 		text-decoration-thickness: 1px;
 		text-underline-offset: 4px;
 	}
 
-	.positions li > h3,
+	.positions li > h2,
 	.positions li > p {
 		grid-column: 2;
 	}
@@ -184,9 +186,10 @@
 		padding-top: 5px;
 	}
 
-	.checks h3 {
+	.checks h2 {
 		margin: 0;
 		font-size: 17px;
+		font-weight: 600;
 		font-stretch: 94%;
 		letter-spacing: -0.014em;
 	}

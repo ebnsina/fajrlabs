@@ -6,6 +6,7 @@
 	import Wordmark from './Wordmark.svelte';
 
 	let menuOpen = $state(false);
+	let menuButton = $state<HTMLButtonElement>();
 
 	const currentPath = $derived(page.url.pathname);
 
@@ -13,14 +14,31 @@
 		return currentPath === href || currentPath.startsWith(`${href}/`);
 	}
 
+	// Escape closes the menu and hands focus back to the control that opened it.
+	function onKeydown(event: KeyboardEvent) {
+		if (event.key !== 'Escape' || !menuOpen) return;
+		menuOpen = false;
+		menuButton?.focus();
+	}
+
 	// Close the mobile menu whenever navigation lands on a new page.
 	$effect(() => {
 		void currentPath;
 		menuOpen = false;
 	});
+
+	// Past this width the toggle is hidden, so a menu left open could never be shut.
+	$effect(() => {
+		const wide = window.matchMedia('(min-width: 1020px)');
+		const close = () => wide.matches && (menuOpen = false);
+
+		close();
+		wide.addEventListener('change', close);
+		return () => wide.removeEventListener('change', close);
+	});
 </script>
 
-<svelte:window onkeydown={(event) => event.key === 'Escape' && (menuOpen = false)} />
+<svelte:window onkeydown={onKeydown} />
 
 <header>
 	<div class="bar">
@@ -44,8 +62,9 @@
 			<button
 				type="button"
 				class="menu-button"
+				bind:this={menuButton}
 				aria-expanded={menuOpen}
-				aria-controls="mobile-menu"
+				aria-controls={menuOpen ? 'mobile-menu' : undefined}
 				onclick={() => (menuOpen = !menuOpen)}
 			>
 				{#if menuOpen}
@@ -61,7 +80,12 @@
 	{#if menuOpen}
 		<nav id="mobile-menu" class="mobile" aria-label="Main">
 			{#each nav as item, index (item.href)}
-				<a href={item.href} class:active={isActive(item.href)} style="--stagger: {index * 28}ms">
+				<a
+					href={item.href}
+					class:active={isActive(item.href)}
+					aria-current={isActive(item.href) ? 'page' : undefined}
+					style="--stagger: {index * 28}ms"
+				>
 					{item.label}
 				</a>
 			{/each}
@@ -176,6 +200,7 @@
 	}
 
 	.cta {
+		position: relative;
 		display: inline-flex;
 		align-items: center;
 		height: 34px;
@@ -206,6 +231,7 @@
 	}
 
 	.menu-button {
+		position: relative;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -220,6 +246,19 @@
 
 	.menu-button:hover {
 		border-color: var(--rule-strong);
+	}
+
+	/*
+	 * A finger needs more than the 34px box the design draws. The tap area grows
+	 * into the surrounding gap without moving anything, and only where it helps.
+	 */
+	@media (pointer: coarse) {
+		.cta::before,
+		.menu-button::before {
+			content: '';
+			position: absolute;
+			inset: -5px -4px;
+		}
 	}
 
 	@media (min-width: 1020px) {
@@ -248,6 +287,14 @@
 
 	nav.mobile a.active {
 		color: var(--ink);
+	}
+
+	/*
+	 * Must out-specify `nav.mobile a`, which would otherwise repaint the button
+	 * text in --muted and leave it grey on the solid background, in both themes.
+	 */
+	nav.mobile a.mobile-cta {
+		color: var(--inverse-ink);
 	}
 
 	.mobile-cta {

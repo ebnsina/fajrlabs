@@ -7,6 +7,36 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] — 2026-08-01
+
+### Fixed
+
+- Content below the fold was hidden with `visibility: hidden` while waiting to
+  animate, which took it out of the tab order entirely. On the questions page
+  only 4 of 13 disclosures could be reached by keyboard; now all 13 can.
+- Form fields had their focus ring suppressed, and validation messages were not
+  associated with their inputs.
+- The native cursor was hidden before the custom one existed, leaving desktop
+  keyboard users with no pointer at all.
+- The skip link did not move focus, and was unreachable part-way down a page.
+- Escape in the mobile menu dumped focus to the page; the menu could be left
+  open and unclosable when widening past the breakpoint; mobile links had no
+  current-page indication.
+- Headings on the standard page skipped a level.
+- Display headings were clipped: the reveal masked each line to its line box,
+  cutting descenders.
+
+### Added
+
+- Favicons at every size, a web manifest, and a theme colour per scheme
+- Structured data (Organization, WebSite, plus Service and FAQ pages)
+- `/llms.txt`, generated from the same content as the pages
+
+### Changed
+
+- Rail labels now appear on hover, and stay visible on touch and when focused
+- Heading reveals lift the whole heading rather than splitting it into lines
+
 ## [0.4.0] — 2026-08-01
 
 ### Added

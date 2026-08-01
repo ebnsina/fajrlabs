@@ -9,33 +9,37 @@
 	let { href }: Props = $props();
 </script>
 
-{#snippet stack()}
-	<span class="stack">
-		<span class="face latin">{site.shortName}</span>
-		<!-- Decorative duplicate: the Latin wordmark is the accessible name. -->
+{#snippet mark()}
+	<!-- Only the strong word swaps: the Arabic reads فَجْر, which is Fajr alone. -->
+	<span class="swap">
+		<span class="face latin">{site.wordmark.strong}</span>
+		<!-- Decorative duplicate; the Latin wordmark stays the accessible name. -->
 		<span class="face arabic" lang="ar" dir="rtl" aria-hidden="true">{site.arabicName}</span>
-	</span>
+	</span><span class="soft">{site.wordmark.soft}</span>
 {/snippet}
 
 {#if href}
-	<a class="mark" {href} aria-label="{site.name} home">{@render stack()}</a>
+	<a class="wordmark" {href} aria-label="{site.name} home">{@render mark()}</a>
 {:else}
-	<span class="mark">{@render stack()}</span>
+	<span class="wordmark">{@render mark()}</span>
 {/if}
 
 <style>
-	.mark {
-		display: inline-block;
-		font-size: 15px;
-		font-weight: 700;
+	.wordmark {
+		display: inline-flex;
+		align-items: center;
+		font-size: 18px;
 		font-stretch: 88%;
 		letter-spacing: 0.04em;
 		line-height: 1.4;
 		white-space: nowrap;
 	}
 
-	/* Both faces occupy one cell; the container clips whichever is out of frame. */
-	.stack {
+	/*
+	 * One grid cell holds both faces, so the widest sets the width and "Labs"
+	 * never shifts as the word swaps beneath it.
+	 */
+	.swap {
 		display: inline-grid;
 		overflow: hidden;
 		height: 1.4em;
@@ -45,24 +49,42 @@
 		grid-area: 1 / 1;
 		display: flex;
 		align-items: center;
+		justify-content: flex-start;
 		transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.latin {
+		font-weight: 700;
+		color: var(--ink);
 	}
 
 	.arabic {
 		font-family: var(--font-arabic);
 		font-weight: 400;
-		font-size: 1.15em;
+		font-size: 1.12em;
 		letter-spacing: 0;
-		transform: translateY(110%);
+		color: var(--ink);
+		transform: translateY(115%);
 	}
 
-	.mark:hover .latin,
-	.mark:focus-visible .latin {
-		transform: translateY(-110%);
+	/* Labs exists because the domain needed it; it should not compete. */
+	.soft {
+		font-weight: 400;
+		color: var(--muted);
 	}
 
-	.mark:hover .arabic,
-	.mark:focus-visible .arabic {
+	.soft::before {
+		/* Non-breaking: a plain space between inline elements collapses. */
+		content: '\00a0';
+	}
+
+	.wordmark:hover .latin,
+	.wordmark:focus-visible .latin {
+		transform: translateY(-115%);
+	}
+
+	.wordmark:hover .arabic,
+	.wordmark:focus-visible .arabic {
 		transform: translateY(0);
 	}
 
@@ -71,15 +93,14 @@
 			transition: none;
 		}
 
-		/* No roll, so the Arabic never needs to move into view. */
-		.mark:hover .latin,
-		.mark:focus-visible .latin {
+		.wordmark:hover .latin,
+		.wordmark:focus-visible .latin {
 			transform: none;
 		}
 
-		.mark:hover .arabic,
-		.mark:focus-visible .arabic {
-			transform: translateY(110%);
+		.wordmark:hover .arabic,
+		.wordmark:focus-visible .arabic {
+			transform: translateY(115%);
 		}
 	}
 </style>

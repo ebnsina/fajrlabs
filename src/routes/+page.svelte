@@ -18,7 +18,7 @@
 	<div class="rail">
 		<span class="label">What we do</span>
 		<div>
-			<h1 {@attach splitReveal({ unit: 'chars', stagger: 0.009, onLoad: true })}>
+			<h1 {@attach splitReveal({ onLoad: true })}>
 				Software built to a standard, <em>not to a brief.</em>
 			</h1>
 			<p class="sub" {@attach reveal({ delay: 150 })}>
@@ -43,9 +43,7 @@
 
 <Section label="The standard" labelAlign="display">
 	<div class="standard-intro">
-		<h2 {@attach splitReveal({ unit: 'words', stagger: 0.03 })}>
-			We wrote the line down, so nobody has to guess.
-		</h2>
+		<h2 {@attach splitReveal()}>We wrote the line down, so nobody has to guess.</h2>
 		<p>
 			Every enquiry meets the same test, including the well-funded ones. Some we turn down. That is
 			the point.
@@ -125,6 +123,27 @@
 		text-transform: uppercase;
 		color: var(--faint);
 		padding-top: 14px;
+		opacity: 0;
+		transition: opacity 0.35s var(--ease);
+	}
+
+	/* Focus-within keeps the label reachable when tabbing rather than pointing. */
+	.hero:hover .label,
+	.hero:focus-within .label {
+		opacity: 1;
+	}
+
+	/* Nothing hovers on a touch screen, so the label simply stays. */
+	@media (hover: none), (pointer: coarse) {
+		.label {
+			opacity: 1;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.label {
+			transition: none;
+		}
 	}
 
 	h1 {

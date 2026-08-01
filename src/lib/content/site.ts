@@ -5,6 +5,8 @@
 export const site = {
 	name: 'Fajr Labs',
 	shortName: 'Fajr Labs',
+	/** Set in two weights: Fajr carries the meaning, Labs sits back. */
+	wordmark: { strong: 'Fajr', soft: 'Labs' },
 	/** Shown on hover in place of the wordmark. Fajr — dawn, and the dawn prayer. */
 	arabicName: 'فَجْر',
 	tagline: 'Software studio · Halal by design',
