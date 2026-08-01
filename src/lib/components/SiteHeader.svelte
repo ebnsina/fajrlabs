@@ -85,8 +85,10 @@
 	@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
 		header {
 			background: color-mix(in srgb, var(--paper) 82%, transparent);
-			backdrop-filter: blur(14px) saturate(150%);
+			/* Prefix first: the minifier keeps the last of a duplicate pair, and
+			   dropping the standard property leaves the blur inert. */
 			-webkit-backdrop-filter: blur(14px) saturate(150%);
+			backdrop-filter: blur(14px) saturate(150%);
 		}
 	}
 
