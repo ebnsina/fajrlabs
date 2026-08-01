@@ -76,9 +76,18 @@
 		position: sticky;
 		top: 0;
 		z-index: 40;
-		background: color-mix(in srgb, var(--paper) 72%, transparent);
-		backdrop-filter: blur(16px) saturate(160%);
-		-webkit-backdrop-filter: blur(16px) saturate(160%);
+		/* Opaque enough to stay legible on its own; the blur is an enhancement,
+		   not something the header depends on to hide the content beneath it. */
+		background: color-mix(in srgb, var(--paper) 94%, transparent);
+	}
+
+	/* Only thin the background where the blur genuinely composites. */
+	@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+		header {
+			background: color-mix(in srgb, var(--paper) 82%, transparent);
+			backdrop-filter: blur(14px) saturate(150%);
+			-webkit-backdrop-filter: blur(14px) saturate(150%);
+		}
 	}
 
 	/* Content dissolves under the bar instead of hitting a hard line. */
@@ -89,7 +98,7 @@
 		height: 28px;
 		background: linear-gradient(
 			to bottom,
-			color-mix(in srgb, var(--paper) 70%, transparent),
+			color-mix(in srgb, var(--paper) 88%, transparent),
 			transparent
 		);
 		pointer-events: none;
