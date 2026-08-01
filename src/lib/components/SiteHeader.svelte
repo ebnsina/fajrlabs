@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { HugeiconsIcon, Menu01Icon, Cancel01Icon } from '#lib/icons.js';
 	import { page } from '$app/state';
-	import { nav, site } from '#lib/content/site.js';
+	import { nav } from '#lib/content/site.js';
 	import ThemeToggle from './ThemeToggle.svelte';
+	import Wordmark from './Wordmark.svelte';
 
 	let menuOpen = $state(false);
 
@@ -23,7 +24,7 @@
 
 <header>
 	<div class="bar">
-		<a class="brand" href="/" aria-label="{site.name} home">{site.shortName}</a>
+		<Wordmark href="/" />
 
 		<nav class="desktop" aria-label="Main">
 			{#each nav as item (item.href)}
@@ -115,14 +116,6 @@
 		margin: 0 auto;
 		padding: 0 var(--gutter);
 		height: 62px;
-	}
-
-	.brand {
-		font-size: 15px;
-		font-weight: 600;
-		font-stretch: 88%;
-		letter-spacing: 0.06em;
-		white-space: nowrap;
 	}
 
 	nav.desktop {

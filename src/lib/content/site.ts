@@ -3,8 +3,10 @@
  * they update across the whole site, including page titles and social previews.
  */
 export const site = {
-	name: 'FajrLabs',
-	shortName: 'FAJRLABS',
+	name: 'Fajr Labs',
+	shortName: 'Fajr Labs',
+	/** Shown on hover in place of the wordmark. Fajr — dawn, and the dawn prayer. */
+	arabicName: 'فَجْر',
 	tagline: 'Software studio · Halal by design',
 	url: 'https://fajrlabs.io',
 	email: 'salam@fajrlabs.io',

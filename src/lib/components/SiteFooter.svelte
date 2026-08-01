@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { footerNav, site } from '#lib/content/site.js';
+	import Wordmark from './Wordmark.svelte';
 	import { services } from '#lib/content/services.js';
 
 	const year = new Date().getFullYear();
@@ -8,7 +9,7 @@
 <footer>
 	<div class="inner">
 		<div class="lead">
-			<span class="brand">{site.shortName}</span>
+			<Wordmark />
 			<p>{site.description}</p>
 			<a class="mail" href="mailto:{site.email}">{site.email}</a>
 		</div>
@@ -73,13 +74,6 @@
 		align-items: flex-start;
 		gap: 14px;
 		max-width: 38ch;
-	}
-
-	.brand {
-		font-size: 15px;
-		font-weight: 600;
-		font-stretch: 88%;
-		letter-spacing: 0.06em;
 	}
 
 	.lead p {

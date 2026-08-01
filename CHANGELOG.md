@@ -7,6 +7,22 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] — 2026-08-01
+
+### Added
+
+- The wordmark rolls to `فَجْر` on hover — dawn, and the dawn prayer
+
+### Changed
+
+- The name is set as "Fajr Labs", with a space, everywhere it appears
+
+### Fixed
+
+- The sticky header's blur was being stripped from the built CSS, because the
+  vendor prefix was written after the standard property and the minifier kept
+  only the last of the pair. Page content showed through the header unblurred.
+
 ## [0.3.0] — 2026-08-01
 
 ### Changed

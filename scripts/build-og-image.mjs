@@ -11,7 +11,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
 	<rect width="1200" height="630" fill="#ffffff"/>
 	<rect x="0" y="0" width="1200" height="8" fill="#0b0b0d"/>
 	<text x="80" y="120" font-family="Mona Sans" font-size="26" font-weight="bold"
-		letter-spacing="3" fill="#0b0b0d">FAJRLABS</text>
+		letter-spacing="3" fill="#0b0b0d">Fajr Labs</text>
 	<text x="80" y="300" font-family="Mona Sans" font-size="88" font-weight="bold"
 		letter-spacing="-3" fill="#0b0b0d">Software built to a standard,</text>
 	<text x="80" y="392" font-family="Mona Sans" font-size="88" font-weight="bold"
