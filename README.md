@@ -19,6 +19,7 @@ pnpm dev
 | `pnpm lint`    | Formatting and lint checks                           |
 | `pnpm format`  | Rewrite files to match the formatting rules          |
 | `pnpm og`      | Regenerate `static/og.png`, the social preview image |
+| `pnpm icons`   | Regenerate the favicon and app icon set              |
 
 ## Configuration
 

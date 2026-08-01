@@ -15,7 +15,8 @@
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run && npm run test:e2e",
 		"test:e2e": "playwright install && playwright test",
-		"og": "node scripts/build-og-image.mjs"
+		"og": "node scripts/build-og-image.mjs",
+		"icons": "node scripts/build-icons.mjs"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
