@@ -8,6 +8,15 @@ export type ChangelogEntry = {
 /** Newest first. Mirrors CHANGELOG.md — keep the two in step. */
 export const changelog: ChangelogEntry[] = [
 	{
+		version: '0.6.0',
+		date: '2026-08-01',
+		summary: 'What the name means, and how the site is built.',
+		changes: [
+			{ kind: 'Added', note: 'Why Fajr — what the word means and why we chose it' },
+			{ kind: 'Added', note: 'A reference page describing how this site is designed' }
+		]
+	},
+	{
 		version: '0.5.1',
 		date: '2026-08-01',
 		summary: 'Corrected how we work with people.',

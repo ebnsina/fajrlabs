@@ -23,6 +23,15 @@
 	</div>
 </Section>
 
+<Section label={about.name.heading}>
+	<div class="naming" {@attach reveal()}>
+		<p class="arabic" lang="ar" dir="rtl">{about.name.arabic}</p>
+		{#each about.name.body as paragraph (paragraph)}
+			<p>{paragraph}</p>
+		{/each}
+	</div>
+</Section>
+
 <Section label="What we believe">
 	<ul class="beliefs" {@attach reveal()}>
 		{#each about.beliefs as belief (belief.title)}
@@ -52,8 +61,26 @@
 <CtaBand />
 
 <style>
-	.prose {
+	.prose,
+	.naming {
 		max-width: var(--measure);
+	}
+
+	.arabic {
+		margin: 0 0 22px;
+		font-family: var(--font-arabic);
+		font-size: clamp(30px, 4vw, 44px);
+		line-height: 1.6;
+	}
+
+	.naming p {
+		margin: 0 0 16px;
+		font-size: 16.5px;
+	}
+
+	.naming p:last-child {
+		margin-bottom: 0;
+		color: var(--muted);
 	}
 
 	.prose p {

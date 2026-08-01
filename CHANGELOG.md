@@ -7,6 +7,15 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] — 2026-08-01
+
+### Added
+
+- `/design`, an unlinked reference page setting out the whole design system,
+  with a button that copies it as Markdown for handing to a language model.
+  Rendered and copied from one source, so the two cannot drift.
+- "Why Fajr" on the About page: what the word means and why it was chosen.
+
 ## [0.5.1] — 2026-08-01
 
 ### Removed
