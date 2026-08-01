@@ -184,7 +184,7 @@
 	<p class="note">
 		The same text the button copies. Select and copy it by hand if the clipboard is blocked.
 	</p>
-	<textarea readonly rows="14" aria-label="Design system as Markdown"
+	<textarea readonly rows="30" aria-label="Design system as Markdown"
 		>{designSystemMarkdown()}</textarea
 	>
 </Section>
@@ -245,10 +245,15 @@
 	}
 
 	.principles {
-		display: flex;
-		flex-direction: column;
-		gap: 26px;
-		max-width: var(--measure);
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 28px 48px;
+	}
+
+	@media (min-width: 720px) {
+		.principles {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
 	}
 
 	.principles h2,
@@ -300,10 +305,15 @@
 	}
 
 	.rules {
-		display: flex;
-		flex-direction: column;
-		gap: 12px;
-		max-width: var(--measure);
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 14px 48px;
+	}
+
+	@media (min-width: 720px) {
+		.rules {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
 	}
 
 	.rules li {
@@ -363,7 +373,8 @@
 
 	textarea {
 		width: 100%;
-		padding: 16px 18px;
+		min-height: 70vh;
+		padding: 20px 22px;
 		border: 1px solid var(--rule-strong);
 		border-radius: 0;
 		background: var(--surface);
