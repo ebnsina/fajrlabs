@@ -1,4 +1,4 @@
-export type WorkItem = {
+export type CaseStudy = {
 	slug: string;
 	name: string;
 	/** Shown wherever the project is listed. */
@@ -11,7 +11,7 @@ export type WorkItem = {
 	standing: string;
 };
 
-export const work: WorkItem[] = [
+export const caseStudies: CaseStudy[] = [
 	{
 		slug: 'safar',
 		name: 'Safar',
@@ -55,6 +55,6 @@ export const work: WorkItem[] = [
 	}
 ];
 
-export function findWork(slug: string): WorkItem | undefined {
-	return work.find((item) => item.slug === slug);
+export function findCaseStudy(slug: string): CaseStudy | undefined {
+	return caseStudies.find((item) => item.slug === slug);
 }

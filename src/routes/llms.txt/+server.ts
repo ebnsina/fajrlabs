@@ -3,7 +3,7 @@ import { services } from '#lib/content/services.js';
 import { ethics } from '#lib/content/ethics.js';
 import { engagements } from '#lib/content/engagements.js';
 import { publishedPosts } from '#lib/content/posts.js';
-import { work } from '#lib/content/work.js';
+import { caseStudies } from '#lib/content/case-studies.js';
 import type { RequestHandler } from './$types';
 
 /**
@@ -37,10 +37,10 @@ ${ethics.decline.map((item) => `- ${item.title}: ${item.note}`).join('\n')}
 
 ## What it is building
 
-${work
+${caseStudies
 	.map(
 		(w) =>
-			`- [${w.name}](${url(`/work/${w.slug}`)}): ${w.oneLine} ${w.sector}. Status: ${w.status}.`
+			`- [${w.name}](${url(`/case-studies/${w.slug}`)}): ${w.oneLine} ${w.sector}. Status: ${w.status}.`
 	)
 	.join('\n')}
 
@@ -54,7 +54,7 @@ first call.
 ## Pages
 
 - [Services](${url('/services')}): all four capabilities
-- [Work](${url('/work')}): what the studio is building, and why
+- [Case studies](${url('/case-studies')}): what the studio is building, and why
 - [Halal by design](${url('/halal-by-design')}): the full standard, and the Qur'an and hadith it rests on
 - [Process](${url('/process')}): how a project runs, stage by stage
 - [Working together](${url('/engagements')}): the three engagement models

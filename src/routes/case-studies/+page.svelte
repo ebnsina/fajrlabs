@@ -5,22 +5,25 @@
 	import Section from '#lib/components/Section.svelte';
 	import CtaBand from '#lib/components/CtaBand.svelte';
 	import { reveal } from '#lib/motion.js';
-	import { work } from '#lib/content/work.js';
+	import { caseStudies } from '#lib/content/case-studies.js';
 </script>
 
-<Seo title="Work" description="What we are building, and the problems it exists to solve." />
+<Seo
+	title="Case studies"
+	description="What we are building, and the problems it exists to solve."
+/>
 
 <PageHeader
-	eyebrow="Work"
+	eyebrow="Case studies"
 	title="What we are building."
 	standfirst="We would rather show one thing properly than list ten logos. Here is what we are working on, what problem it solves, and where it honestly stands."
 />
 
 <Section label="Projects">
 	<ul class="list" {@attach reveal({ children: true })}>
-		{#each work as item (item.slug)}
+		{#each caseStudies as item (item.slug)}
 			<li>
-				<a href="/work/{item.slug}" data-cursor="Read">
+				<a href="/case-studies/{item.slug}" data-cursor="Read">
 					<span class="body">
 						<span class="name">{item.name}</span>
 						<span class="line">{item.oneLine}</span>

@@ -20,7 +20,7 @@ export const site = {
 
 export const nav = [
 	{ href: '/services', label: 'Services' },
-	{ href: '/work', label: 'Work' },
+	{ href: '/case-studies', label: 'Case studies' },
 	{ href: '/halal-by-design', label: 'Halal by design' },
 	{ href: '/process', label: 'Process' },
 	{ href: '/engagements', label: 'Working together' },
@@ -33,7 +33,7 @@ export const footerNav = [
 		heading: 'Studio',
 		links: [
 			{ href: '/about', label: 'About' },
-			{ href: '/work', label: 'Work' },
+			{ href: '/case-studies', label: 'Case studies' },
 			{ href: '/process', label: 'How we work' },
 			{ href: '/engagements', label: 'Working together' },
 			{ href: '/changelog', label: 'Changelog' }

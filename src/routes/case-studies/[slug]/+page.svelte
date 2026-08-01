@@ -13,7 +13,7 @@
 
 <Seo title={item.name} description={item.oneLine} />
 
-<PageHeader eyebrow="Work" title={item.name} standfirst={item.oneLine} />
+<PageHeader eyebrow="Case studies" title={item.name} standfirst={item.oneLine} />
 
 <Section label="Where it stands">
 	<dl class="facts" {@attach reveal()}>
@@ -53,11 +53,11 @@
 <Section label="Honestly">
 	<p class="standing" {@attach reveal()}>{item.standing}</p>
 
-	<a class="back" href="/work">
+	<a class="back" href="/case-studies">
 		<span class="icon" aria-hidden="true">
 			<HugeiconsIcon icon={ArrowLeft02Icon} size={15} strokeWidth={2} />
 		</span>
-		All work
+		All case studies
 	</a>
 </Section>
 

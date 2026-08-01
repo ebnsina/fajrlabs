@@ -11,7 +11,7 @@ export const changelog: ChangelogEntry[] = [
 		version: '0.7.0',
 		date: '2026-08-02',
 		summary: 'Showing what we are building.',
-		changes: [{ kind: 'Added', note: 'A Work section, starting with Safar' }]
+		changes: [{ kind: 'Added', note: 'Case studies, starting with Safar' }]
 	},
 	{
 		version: '0.6.0',
