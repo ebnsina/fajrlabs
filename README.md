@@ -1,6 +1,6 @@
 # FajrLabs
 
-The FajrLabs studio site. SvelteKit on Cloudflare Pages.
+The FajrLabs studio site. SvelteKit on Vercel.
 
 ## Running it
 
@@ -13,7 +13,7 @@ pnpm dev
 | Command        | What it does                                         |
 | -------------- | ---------------------------------------------------- |
 | `pnpm dev`     | Development server on http://localhost:5173          |
-| `pnpm build`   | Production build for Cloudflare Pages                |
+| `pnpm build`   | Production build for Vercel                          |
 | `pnpm preview` | Serve the production build locally                   |
 | `pnpm check`   | Type-check everything                                |
 | `pnpm lint`    | Formatting and lint checks                           |
@@ -32,8 +32,9 @@ request fails loudly rather than silently dropping an enquiry.
 | `CONTACT_TO_EMAIL`   | The mailbox enquiries arrive in                        |
 | `CONTACT_FROM_EMAIL` | The verified Resend sender, e.g. `FajrLabs <hello@…>`  |
 
-Locally these come from `.env`. In production set them as secrets on the
-Cloudflare Pages project — never commit them.
+Locally these come from `.env`. In production add them under **Project →
+Settings → Environment Variables** in Vercel, for every environment you deploy
+(Production, Preview and Development). Never commit them.
 
 ## Where things live
 
@@ -84,5 +85,20 @@ someone can quote it and you can find it in the logs.
 
 ## Deploying
 
-Builds for Cloudflare Pages via `@sveltejs/adapter-cloudflare`. Set the three
-environment variables as secrets on the Pages project, then `pnpm build`.
+Builds for Vercel via `@sveltejs/adapter-vercel`. Import the repository in
+Vercel and it detects SvelteKit on its own — the defaults are correct, so no
+build settings need changing:
+
+| Setting          | Value          |
+| ---------------- | -------------- |
+| Framework        | SvelteKit      |
+| Build command    | `pnpm build`   |
+| Install command  | `pnpm install` |
+| Output directory | (leave blank)  |
+
+Add the three environment variables before the first deploy, otherwise the
+enquiry form will fail loudly on its first submission — by design, rather than
+silently dropping the message.
+
+Every branch gets its own preview URL, which is how the two design directions
+can be compared: `main` is the still version, `motion` adds the animation.

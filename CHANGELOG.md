@@ -7,6 +7,15 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] — 2026-08-01
+
+### Changed
+
+- Deploys to Vercel via `@sveltejs/adapter-vercel` instead of Cloudflare Pages.
+  Wrangler, the generated worker types and the Cloudflare `App.Platform`
+  bindings are all removed; environment variables now come from the Vercel
+  project settings.
+
 ## [0.2.0] — 2026-08-01
 
 Motion, added without putting the content behind it.

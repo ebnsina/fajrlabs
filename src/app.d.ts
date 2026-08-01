@@ -2,13 +2,6 @@
 // for information about these interfaces
 declare global {
 	namespace App {
-		interface Platform {
-			env: Env;
-			ctx: ExecutionContext;
-			caches: CacheStorage;
-			cf?: IncomingRequestCfProperties;
-		}
-
 		/** Everything shown on an error page. `message` is always safe to display. */
 		interface Error {
 			message: string;
