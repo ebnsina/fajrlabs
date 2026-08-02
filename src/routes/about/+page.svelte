@@ -55,6 +55,10 @@
 			<dt>Email</dt>
 			<dd><a href="mailto:{site.email}">{site.email}</a></dd>
 		</div>
+		<div>
+			<dt>WhatsApp</dt>
+			<dd><a href={site.whatsapp.href} rel="noopener">{site.whatsapp.display}</a></dd>
+		</div>
 	</dl>
 </Section>
 

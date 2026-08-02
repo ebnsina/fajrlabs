@@ -7,6 +7,13 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.6] — 2026-08-02
+
+### Added
+
+- The WhatsApp number in the details list on About, next to the email, so both
+  ways of reaching the studio sit together rather than only on Contact.
+
 ## [0.7.5] — 2026-08-02
 
 ### Added
