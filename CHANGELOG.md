@@ -7,6 +7,26 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.3] — 2026-08-02
+
+### Changed
+
+- Claims of past client work softened to statements of intent. The site said
+  "yes, and we have" about turning down a budget, "many of our clients", "it
+  has cost us work" and "most of our work is this" — all written by me, none
+  supported by any published client project. They now state what the studio
+  will do rather than what it has done.
+- The public changelog no longer narrates internal craft: menu item counts,
+  hover behaviour, header rendering, copy edits.
+
+### Added
+
+- WhatsApp on the contact page, alongside email.
+
+### Fixed
+
+- `/llms.txt` said "the three engagement models" after the third was removed.
+
 ## [0.7.2] — 2026-08-02
 
 ### Removed

@@ -67,6 +67,7 @@ ${publishedPosts.length ? `\n## Writing\n\n${publishedPosts.map((p) => `- [${p.t
 ## Contact
 
 Email: ${site.email}
+WhatsApp: ${site.whatsapp.display}
 Location: ${site.location}
 Replies within one working day.
 `;

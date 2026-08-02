@@ -7,12 +7,12 @@ export const faqGroups: { heading: string; items: Faq[] }[] = [
 			{
 				question: 'What does “halal by design” mean for my project?',
 				answer:
-					'We have written down the work we will not take, and every enquiry is checked against it before we quote. For most clients it changes nothing except that you know where we stand.'
+					'We have written down the work we will not take, and every enquiry is checked against it before we quote. For most projects it changes nothing except that you know where we stand.'
 			},
 			{
 				question: 'Do I have to be Muslim to work with you?',
 				answer:
-					'No, and many of our clients are not. What you get either way is a studio that tells you the truth.'
+					'No. You do not have to share our beliefs to work with us. What you get either way is a studio that tells you the truth.'
 			},
 			{
 				question: 'Most of my product is fine. One part might not be.',
@@ -21,7 +21,7 @@ export const faqGroups: { heading: string; items: Faq[] }[] = [
 			},
 			{
 				question: 'Would you turn down a large budget?',
-				answer: 'Yes, and we have. It is the reason the studio exists.'
+				answer: 'Yes. It is the reason the studio exists.'
 			}
 		]
 	},

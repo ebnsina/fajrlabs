@@ -15,7 +15,7 @@ export const engagements = {
 			name: 'A project, fixed price',
 			bestFor: 'You know what you need',
 			summary:
-				'Scope and price agreed before we start. Neither moves. Most of our work is this, because it puts the risk on us instead of you.',
+				'Scope and price agreed before we start. Neither moves. This is how we prefer to work, because it puts the risk on us instead of you.',
 			includes: [
 				'A written plan you approve first',
 				'Something to look at every week or two',

@@ -8,15 +8,6 @@ export type ChangelogEntry = {
 /** Newest first. Mirrors CHANGELOG.md — keep the two in step. */
 export const changelog: ChangelogEntry[] = [
 	{
-		version: '0.7.1',
-		date: '2026-08-02',
-		summary: 'A shorter, calmer menu.',
-		changes: [
-			{ kind: 'Changed', note: 'Five items in the menu instead of seven' },
-			{ kind: 'Changed', note: 'The menu dims everything but the item you are pointing at' }
-		]
-	},
-	{
 		version: '0.7.0',
 		date: '2026-08-02',
 		summary: 'Showing what we are building.',
@@ -26,28 +17,19 @@ export const changelog: ChangelogEntry[] = [
 		version: '0.6.0',
 		date: '2026-08-01',
 		summary: 'What the name means, and how the site is built.',
-		changes: [
-			{ kind: 'Added', note: 'Why Fajr — what the word means and why we chose it' },
-			{ kind: 'Added', note: 'A reference page describing how this site is designed' }
-		]
+		changes: [{ kind: 'Added', note: 'Why Fajr — what the word means and why we chose it' }]
 	},
 	{
 		version: '0.5.1',
 		date: '2026-08-01',
 		summary: 'Corrected how we work with people.',
-		changes: [
-			{ kind: 'Removed', note: 'We do not join other teams, so that option is gone' },
-			{ kind: 'Changed', note: 'Ongoing support covers the work we built ourselves' }
-		]
+		changes: [{ kind: 'Changed', note: 'Ongoing support covers the work we built ourselves' }]
 	},
 	{
 		version: '0.4.0',
 		date: '2026-08-01',
 		summary: 'A wordmark that greets you in Arabic.',
-		changes: [
-			{ kind: 'Added', note: 'Hover the name and it turns to فَجْر — dawn' },
-			{ kind: 'Fixed', note: 'The header no longer lets the page show through it' }
-		]
+		changes: [{ kind: 'Added', note: 'Hover the name and it turns to فَجْر — dawn' }]
 	},
 	{
 		version: '0.3.0',
@@ -83,9 +65,7 @@ export const changelog: ChangelogEntry[] = [
 			{
 				kind: 'Added',
 				note: 'The Qur’an and hadith our standard rests on, quoted with references'
-			},
-			{ kind: 'Changed', note: 'Fewer dividing lines, and columns that line up across the page' },
-			{ kind: 'Changed', note: 'Shorter, sharper writing throughout' }
+			}
 		]
 	}
 ];

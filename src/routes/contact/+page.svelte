@@ -141,9 +141,11 @@
 		</form>
 
 		<aside>
-			<h2>Prefer email?</h2>
+			<h2>Prefer to message?</h2>
 			<p>
-				Write to <a href="mailto:{site.email}">{site.email}</a> and it reaches the same person.
+				Write to <a href="mailto:{site.email}">{site.email}</a>, or send a message on
+				<a href={site.whatsapp.href} rel="noopener">WhatsApp</a> ({site.whatsapp.display}). Both
+				reach the same person.
 			</p>
 
 			<h2>What happens next</h2>

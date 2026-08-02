@@ -12,6 +12,7 @@ export const site = {
 	tagline: 'Software studio · Halal by design',
 	url: 'https://fajrlabs.io',
 	email: 'salam@fajrlabs.io',
+	whatsapp: { display: '+880 1841 252123', href: 'https://wa.me/8801841252123' },
 	location: 'Remote — Europe, the Gulf and South Asia',
 	founded: '2024',
 	description:

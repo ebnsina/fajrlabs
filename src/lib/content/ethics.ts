@@ -6,7 +6,7 @@ export const ethics = {
 		'Most studios build whatever is paid for. We do not. Here is exactly where the line sits.',
 	intro: [
 		'Ethics come before the brief and before the budget. It is a standard we hold ourselves to as Muslims, and every enquiry meets it — including the well-funded ones, and the ones we would love to take.',
-		'You do not have to share our beliefs to work with us. Many clients do not. You get a studio that tells you the truth, and never puts your project next to something that would embarrass you.'
+		'You do not have to share our beliefs to work with us. You get a studio that tells you the truth, and never puts your project next to something that would embarrass you.'
 	],
 	accept: [
 		{
@@ -88,5 +88,5 @@ export const ethics = {
 	sourcesNote:
 		'We are not scholars, and this page is not a fatwa. It is the reasoning behind how we choose our work. Where a project raises a question we cannot answer, we ask someone qualified before we quote.',
 	closing:
-		'We would rather lose a project than take one we are uneasy about. It has cost us work. We would choose the same again.'
+		'We would rather lose a project than take one we are uneasy about. We know that will cost us work. We would choose the same again.'
 } as const;

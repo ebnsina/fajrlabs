@@ -45,8 +45,8 @@
 	<div class="standard-intro">
 		<h2 {@attach splitReveal()}>We wrote the line down, so nobody has to guess.</h2>
 		<p>
-			Every enquiry meets the same test, including the well-funded ones. Some we turn down. That is
-			the point.
+			Every enquiry meets the same test, including the well-funded ones. Any that fails it, we turn
+			down. That is the point.
 		</p>
 	</div>
 

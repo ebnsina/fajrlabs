@@ -3,7 +3,7 @@ export const about = {
 		'A software studio that decided what it would not build before it decided what it would.',
 	intro: [
 		'We build custom software, mobile apps, plugins and practical automation. Small on purpose, so the people you meet are the people who build it.',
-		'One decision shaped the rest: write the standard down, then apply it to every enquiry rather than the convenient ones. It has cost us projects. We would decide the same again.'
+		'One decision shaped the rest: write the standard down, then apply it to every enquiry rather than the convenient ones. We know it will cost us work. We would decide the same again.'
 	],
 	/*
 	 * Why the name. This explains what Fajr means and why it suits the studio —
