@@ -57,7 +57,7 @@ first call.
 - [Case studies](${url('/case-studies')}): what the studio is building, and why
 - [Halal by design](${url('/halal-by-design')}): the full standard, and the Qur'an and hadith it rests on
 - [Process](${url('/process')}): how a project runs, stage by stage
-- [Working together](${url('/engagements')}): the three engagement models
+- [Working together](${url('/engagements')}): how the studio engages
 - [Common questions](${url('/faq')}): pricing, timing, ownership, confidentiality
 - [About](${url('/about')}): the studio
 - [Contact](${url('/contact')}): enquiry form
