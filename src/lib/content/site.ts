@@ -23,7 +23,7 @@ export const site = {
 /*
  * Five items, in the order a buyer asks the questions: what do you do, show me,
  * what is different, how does it work, who are you. Everything else lives in the
- * footer — including Writing, which has nothing published yet.
+ * footer, including Writing — it has pieces now, but the menu stays at five.
  */
 export const nav = [
 	{ href: '/services', label: 'Services' },

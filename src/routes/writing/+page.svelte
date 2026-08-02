@@ -4,6 +4,7 @@
 	import Section from '#lib/components/Section.svelte';
 	import CtaBand from '#lib/components/CtaBand.svelte';
 	import { reveal } from '#lib/motion.js';
+	import Aurora from '#lib/components/Aurora.svelte';
 	import { publishedPosts } from '#lib/content/posts.js';
 	import { formatDate, isoDate } from '#lib/utils/format.js';
 </script>
@@ -25,9 +26,12 @@
 			{#each publishedPosts as post (post.slug)}
 				<li>
 					<a href="/writing/{post.slug}">
-						<time datetime={isoDate(post.date)}>{formatDate(post.date)}</time>
-						<h2>{post.title}</h2>
-						<p>{post.summary}</p>
+						<span class="art"><Aurora seed={post.slug} /></span>
+						<span class="text">
+							<time datetime={isoDate(post.date)}>{formatDate(post.date)}</time>
+							<h2>{post.title}</h2>
+							<p>{post.summary}</p>
+						</span>
 					</a>
 				</li>
 			{/each}
@@ -51,35 +55,43 @@
 
 <style>
 	.posts {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 44px 36px;
 		margin: 0;
 		padding: 0;
 		list-style: none;
-		max-width: var(--measure);
 	}
 
-	.posts li {
-		border-top: 1px solid var(--rule);
-	}
-
-	.posts li:first-child {
-		border-top: none;
-	}
-
-	.posts li:first-child a {
-		padding-top: 0;
+	@media (min-width: 760px) {
+		.posts {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
 	}
 
 	.posts a {
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
-		padding: 22px 0;
-		transition: padding-inline var(--slow) var(--ease);
+		gap: 18px;
 	}
 
-	.posts a:hover,
-	.posts a:focus-visible {
-		padding-inline: 10px;
+	/* The art lifts on hover. No border and no background change — the picture is
+	   already the edge, so anything else would be marking the same one twice. */
+	.art {
+		display: block;
+		overflow: hidden;
+		transition: transform var(--slow) var(--ease);
+	}
+
+	.posts a:hover .art,
+	.posts a:focus-visible .art {
+		transform: translateY(-6px);
+	}
+
+	.text {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
 	}
 
 	time {
@@ -92,7 +104,8 @@
 
 	.posts h2 {
 		margin: 0;
-		font-size: clamp(20px, 2.6vw, 26px);
+		max-width: 22ch;
+		font-size: clamp(19px, 2.1vw, 23px);
 		font-stretch: 91%;
 		letter-spacing: -0.022em;
 		line-height: 1.14;
@@ -143,9 +156,9 @@
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.posts a:hover,
-		.posts a:focus-visible {
-			padding-inline: 0;
+		.posts a:hover .art,
+		.posts a:focus-visible .art {
+			transform: none;
 		}
 	}
 </style>

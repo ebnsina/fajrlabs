@@ -4,6 +4,7 @@
 	import PageHeader from '#lib/components/PageHeader.svelte';
 	import Section from '#lib/components/Section.svelte';
 	import CtaBand from '#lib/components/CtaBand.svelte';
+	import Aurora from '#lib/components/Aurora.svelte';
 	import { formatDate, isoDate } from '#lib/utils/format.js';
 
 	let { data } = $props();
@@ -21,9 +22,15 @@
 <PageHeader eyebrow={formatDate(post.date)} title={post.title} standfirst={post.summary} />
 
 <Section label="Article">
+	<div class="cover"><Aurora seed={post.slug} ratio="21 / 9" /></div>
+
 	<article>
-		{#each post.body as paragraph (paragraph)}
-			<p>{paragraph}</p>
+		{#each post.body as block, index (index)}
+			{#if typeof block === 'string'}
+				<p>{block}</p>
+			{:else}
+				<h2>{block.heading}</h2>
+			{/if}
 		{/each}
 		<p class="published">
 			Published <time datetime={isoDate(post.date)}>{formatDate(post.date)}</time>
@@ -45,9 +52,24 @@
 		max-width: var(--measure);
 	}
 
+	.cover {
+		margin-bottom: 40px;
+	}
+
 	article p {
 		margin: 0 0 18px;
 		font-size: 16.5px;
+	}
+
+	article h2 {
+		margin: 34px 0 12px;
+		font-size: clamp(19px, 2.1vw, 22px);
+		font-stretch: 92%;
+		letter-spacing: -0.018em;
+	}
+
+	article h2:first-child {
+		margin-top: 0;
 	}
 
 	.published {

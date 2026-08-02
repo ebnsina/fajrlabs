@@ -7,6 +7,27 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] — 2026-08-02
+
+### Added
+
+- The first two pieces on `/writing`. **Why this studio exists** — why the
+  standard was written down before deciding what to build, and why the order
+  matters. **What we do differently, and what it costs** — six differences,
+  each with the price it carries, because a difference with no cost is a slogan.
+- `Aurora`, a monochrome gradient generated from a seed rather than shipped as
+  a file. Every piece gets its own without anyone making one, there is no image
+  to load, and it cannot go stale. Greys only: the noise is desaturated inside
+  the SVG filter, since `feTurbulence` produces colour.
+- Subheadings in a piece, via a `PostBlock` that is either a paragraph or a
+  heading. The longer piece is unreadable as one column of paragraphs.
+
+### Changed
+
+- `/writing` is a grid of cards, each led by its own artwork, instead of a list
+  of rules. The artwork is the card's edge, so there is no border and no
+  background change marking the same edge twice.
+
 ## [0.7.6] — 2026-08-02
 
 ### Added
