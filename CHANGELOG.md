@@ -7,6 +7,13 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.2] — 2026-08-02
+
+### Removed
+
+- A line on the About page explaining why the name carries a second word. It
+  was an internal aside, not something a visitor should read.
+
 ## [0.7.1] — 2026-08-02
 
 ### Changed

@@ -80,4 +80,12 @@ The rules most often broken:
   capabilities unless given. If a sentence needs a fact to be true, ask for it or
   cut it. This has caused real errors: an engagement the studio does not offer
   was written into the site and had to be removed.
+- **What the owner tells you is context, not copy.** Explanations, asides and
+  reasoning given in chat are there so you understand the brief. They are not
+  approved text and usually should never appear on the site. Anything internal —
+  why a name was picked, what a domain cost, what a constraint was — stays
+  internal unless he explicitly says to publish it. This has gone wrong twice:
+  "Labs is there because the domain needed a second word" was an aside that
+  ended up on the About page, and an earlier draft published explanatory
+  language he had written to brief me. When in doubt, leave it out and ask.
 - Brand facts are placeholders in `src/lib/content/site.ts` until confirmed.

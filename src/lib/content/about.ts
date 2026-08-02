@@ -15,8 +15,7 @@ export const about = {
 		body: [
 			'Fajr is the dawn, and the prayer that comes with it — the first of the day, prayed while it is still dark, before the sun has cleared the horizon.',
 			'It is the hardest one to keep. Nobody sees you get up for it. There is no audience and no immediate reward, only the fact that you said you would. That is the whole idea behind how we work: the standard holds when it is inconvenient, or it was never a standard.',
-			'It is also a beginning. Fajr is the moment the day is set, before anything has gone wrong. Good software works the same way — what you decide at the start, quietly, is what you live with later.',
-			'Labs is there because the domain needed a second word. Fajr is the part that means something.'
+			'It is also a beginning. Fajr is the moment the day is set, before anything has gone wrong. Good software works the same way — what you decide at the start, quietly, is what you live with later.'
 		]
 	},
 	beliefs: [
