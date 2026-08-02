@@ -53,14 +53,20 @@
 			description: site.description,
 			foundingDate: site.founded,
 			logo: new URL('/icon-512.png', site.url).href,
-			// The number is for WhatsApp, so it is described as a messaging contact
-			// rather than a bare telephone, which would invite calls instead.
+			// Two separate contacts, and neither carries `telephone` — the number is
+			// for WhatsApp only, and stating it as a phone invites calls instead.
 			contactPoint: [
 				{
 					'@type': 'ContactPoint',
 					contactType: 'customer support',
 					email: site.email,
-					telephone: site.whatsapp.tel,
+					availableLanguage: ['English', 'Bengali'],
+					areaServed: 'Worldwide'
+				},
+				{
+					'@type': 'ContactPoint',
+					contactType: 'customer support',
+					contactOption: 'WhatsApp',
 					url: site.whatsapp.href,
 					availableLanguage: ['English', 'Bengali'],
 					areaServed: 'Worldwide'

@@ -17,6 +17,10 @@ export const changelog: ChangelogEntry[] = [
 			{
 				kind: 'Added',
 				note: 'WhatsApp where search engines and language models can read it, so they can pass it on'
+			},
+			{
+				kind: 'Fixed',
+				note: 'Tapping the WhatsApp number on an iPhone offered to call it. It opens WhatsApp'
 			}
 		]
 	},

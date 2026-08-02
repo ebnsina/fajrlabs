@@ -15,17 +15,22 @@ this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
   ways of reaching the studio sit together rather than only on Contact.
 
 - WhatsApp in the structured data, as a `ContactPoint` on the organisation and a
-  `ContactPage` on Contact. It is described as a messaging contact carrying a
-  `url`, not a bare `telephone`, so it is not read as a call line. `/llms.txt`
-  now carries the link as well as the number.
+  `ContactPage` on Contact. It carries a `url` and `contactOption: WhatsApp`,
+  and deliberately no `telephone` — the number is not a phone line, and saying
+  it was would have invited calls. `/llms.txt` carries the link as well as the
+  number.
+- `format-detection: telephone=no`, because iOS silently turns any bare number
+  in the text into a call button. On Contact the number sat outside the link as
+  plain text, so tapping it on an iPhone offered to dial rather than open
+  WhatsApp. It is now inside the link.
 
 ### Changed
 
 - Languages on About read as a closed list of two. It now invites the reader to
   ask about another, which is an opening rather than a limit — and stops short
   of claiming fluency the studio has not stated.
-- `site.whatsapp` gained `tel`, the E.164 form, because structured data and
-  dialers reject the spaced display version.
+- Both WhatsApp links open in a new tab, so an enquiry half-typed into the form
+  is not lost by leaving the page.
 
 ## [0.7.5] — 2026-08-02
 

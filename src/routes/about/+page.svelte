@@ -57,7 +57,9 @@
 		</div>
 		<div>
 			<dt>WhatsApp</dt>
-			<dd><a href={site.whatsapp.href} rel="noopener">{site.whatsapp.display}</a></dd>
+			<dd>
+				<a href={site.whatsapp.href} target="_blank" rel="noopener">{site.whatsapp.display}</a>
+			</dd>
 		</div>
 	</dl>
 </Section>

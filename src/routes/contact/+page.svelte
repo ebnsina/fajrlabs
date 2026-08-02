@@ -29,8 +29,8 @@
 			mainEntity: {
 				'@type': 'ContactPoint',
 				contactType: 'sales',
+				contactOption: 'WhatsApp',
 				email: site.email,
-				telephone: site.whatsapp.tel,
 				url: site.whatsapp.href,
 				availableLanguage: ['English', 'Bengali'],
 				areaServed: 'Worldwide'
@@ -164,8 +164,9 @@
 			<h2>Prefer to message?</h2>
 			<p>
 				Write to <a href="mailto:{site.email}">{site.email}</a>, or send a message on
-				<a href={site.whatsapp.href} rel="noopener">WhatsApp</a> ({site.whatsapp.display}). Both
-				reach the same person.
+				<a href={site.whatsapp.href} target="_blank" rel="noopener">
+					WhatsApp ({site.whatsapp.display})
+				</a>. Both reach the same person.
 			</p>
 
 			<h2>What happens next</h2>

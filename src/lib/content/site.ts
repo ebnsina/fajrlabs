@@ -12,12 +12,8 @@ export const site = {
 	tagline: 'Software studio · Halal by design',
 	url: 'https://fajrlabs.io',
 	email: 'salam@fajrlabs.io',
-	/** `tel` is E.164, the only form structured data and dialers accept. */
-	whatsapp: {
-		display: '+880 1841 252123',
-		tel: '+8801841252123',
-		href: 'https://wa.me/8801841252123'
-	},
+	/** Messaging only. Deliberately no `tel:` form anywhere — it is not a phone line. */
+	whatsapp: { display: '+880 1841 252123', href: 'https://wa.me/8801841252123' },
 	location: 'Remote — Europe, the Gulf and South Asia',
 	founded: '2024',
 	description:
