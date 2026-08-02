@@ -24,6 +24,9 @@ this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Writing is in the main menu, between Process and About. It was in the footer
+  only because it had nothing published; now it does. Six items rather than
+  five, placed where the argument sits before the studio that makes it.
 - `/writing` is a grid of cards, each led by its own artwork, instead of a list
   of rules. The artwork is the card's edge, so there is no border and no
   background change marking the same edge twice.

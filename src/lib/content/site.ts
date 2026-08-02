@@ -21,15 +21,16 @@ export const site = {
 } as const;
 
 /*
- * Five items, in the order a buyer asks the questions: what do you do, show me,
- * what is different, how does it work, who are you. Everything else lives in the
- * footer, including Writing — it has pieces now, but the menu stays at five.
+ * In the order a buyer asks the questions: what do you do, show me, what is
+ * different, how does it work, what do you think, who are you. Writing sits
+ * before About because it is the argument, and About is the answer to it.
  */
 export const nav = [
 	{ href: '/services', label: 'Services' },
 	{ href: '/case-studies', label: 'Case studies' },
 	{ href: '/halal-by-design', label: 'Halal by design' },
 	{ href: '/process', label: 'Process' },
+	{ href: '/writing', label: 'Writing' },
 	{ href: '/about', label: 'About' }
 ] as const;
 
