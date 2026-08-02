@@ -6,6 +6,8 @@ export type CaseStudy = {
 	/** Stated plainly so nothing here can be mistaken for delivered client work. */
 	status: string;
 	sector: string;
+	/** Public URL, when there is something to look at. */
+	url?: string;
 	problem: string[];
 	decisions: { title: string; detail: string }[];
 	standing: string;
@@ -18,6 +20,7 @@ export const caseStudies: CaseStudy[] = [
 		oneLine: 'Buses, trains and flights across Bangladesh, in one search.',
 		status: 'Our own product, in development',
 		sector: 'Travel booking',
+		url: 'https://safar7.vercel.app',
 		problem: [
 			'Booking a journey across Bangladesh means visiting three different kinds of website. Bus operators sell their own seats. The railway sells its own. Airlines sell theirs. Nobody shows you all three side by side, so working out whether to take the overnight coach or the morning flight means opening half a dozen tabs and doing the comparison in your head.',
 			'The second problem is the price. The number that gets you to click is rarely the number you pay. Fees appear at the last step, once you have spent ten minutes entering passenger details and feel committed.',
@@ -51,7 +54,7 @@ export const caseStudies: CaseStudy[] = [
 			}
 		],
 		standing:
-			'Safar is not live. It runs on generated timetables rather than real operators, and no seat sold through it would carry you anywhere yet. We are building it because it is the kind of everyday problem we like: unglamorous, widely felt, and mostly a matter of refusing to do the annoying things other services do.'
+			'You can open Safar and use it, but it is not a real service. The timetables are generated rather than taken from operators, and nothing booked through it will carry you anywhere. What is there is the whole path — search, compare, choose a seat, check out, get a reference — working end to end, which is the part worth proving. We are building it because it is the kind of everyday problem we like: unglamorous, widely felt, and mostly a matter of refusing to do the annoying things other services do.'
 	}
 ];
 

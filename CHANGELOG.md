@@ -7,6 +7,19 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.4] — 2026-08-02
+
+### Added
+
+- A link to Safar from its case study, the index and `/llms.txt`.
+
+### Changed
+
+- The Safar write-up said "Safar is not live", which stopped being true the
+  moment it had a public URL. It now says you can open and use it, and is
+  precise about what it is not: generated timetables, no real operators, and
+  nothing booked will carry you anywhere.
+
 ## [0.7.3] — 2026-08-02
 
 ### Changed

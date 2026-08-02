@@ -25,6 +25,16 @@
 			<dt>Sector</dt>
 			<dd>{item.sector}</dd>
 		</div>
+		{#if item.url}
+			<div>
+				<dt>See it</dt>
+				<dd>
+					<a href={item.url} rel="noopener" data-cursor="Open">
+						{item.url.replace('https://', '')}
+					</a>
+				</dd>
+			</div>
+		{/if}
 	</dl>
 </Section>
 
@@ -103,6 +113,17 @@
 	dd {
 		margin: 0;
 		font-size: 15px;
+	}
+
+	dd a {
+		border-bottom: 1px solid var(--rule-strong);
+		padding-bottom: 1px;
+		transition: border-color var(--fast) var(--ease);
+	}
+
+	dd a:hover,
+	dd a:focus-visible {
+		border-color: var(--ink);
 	}
 
 	.prose {

@@ -40,7 +40,7 @@ ${ethics.decline.map((item) => `- ${item.title}: ${item.note}`).join('\n')}
 ${caseStudies
 	.map(
 		(w) =>
-			`- [${w.name}](${url(`/case-studies/${w.slug}`)}): ${w.oneLine} ${w.sector}. Status: ${w.status}.`
+			`- [${w.name}](${url(`/case-studies/${w.slug}`)}): ${w.oneLine} ${w.sector}. Status: ${w.status}.${w.url ? ` Try it: ${w.url}` : ''}`
 	)
 	.join('\n')}
 

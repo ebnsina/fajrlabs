@@ -27,7 +27,8 @@
 					<span class="body">
 						<span class="name">{item.name}</span>
 						<span class="line">{item.oneLine}</span>
-						<span class="meta">{item.sector} · {item.status}</span>
+						<span class="meta">{item.sector} · {item.status}{item.url ? ' · Live to try' : ''}</span
+						>
 					</span>
 					<span class="arrow" aria-hidden="true">
 						<HugeiconsIcon icon={ArrowUpRight01Icon} size={16} strokeWidth={1.8} />
