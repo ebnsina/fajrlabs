@@ -10,8 +10,11 @@ export const changelog: ChangelogEntry[] = [
 	{
 		version: '0.7.6',
 		date: '2026-08-02',
-		summary: 'WhatsApp on the About page.',
-		changes: [{ kind: 'Added', note: 'The WhatsApp number in the details on About' }]
+		summary: 'Easier to reach us, in more languages.',
+		changes: [
+			{ kind: 'Added', note: 'The WhatsApp number in the details on About' },
+			{ kind: 'Changed', note: 'Languages now invites you to ask, rather than reading as a limit' }
+		]
 	},
 	{
 		version: '0.7.5',

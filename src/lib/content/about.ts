@@ -39,7 +39,7 @@ export const about = {
 	how: [
 		{ label: 'Size', value: 'Small on purpose. You work with the builders' },
 		{ label: 'Where', value: 'Remote, with hours that overlap yours' },
-		{ label: 'Languages', value: 'English and Bengali' },
+		{ label: 'Languages', value: 'English and Bengali. Ask if another works better for you' },
 		{ label: 'First reply', value: 'Within one working day' }
 	]
 } as const;

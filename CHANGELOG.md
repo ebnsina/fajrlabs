@@ -14,6 +14,12 @@ this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 - The WhatsApp number in the details list on About, next to the email, so both
   ways of reaching the studio sit together rather than only on Contact.
 
+### Changed
+
+- Languages on About read as a closed list of two. It now invites the reader to
+  ask about another, which is an opening rather than a limit — and stops short
+  of claiming fluency the studio has not stated.
+
 ## [0.7.5] — 2026-08-02
 
 ### Added
