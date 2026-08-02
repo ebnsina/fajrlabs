@@ -34,7 +34,7 @@ not hand-maintain a second copy.
 
 ## Design
 
-The full system is at `/design` (unlinked, noindex) and its single source is
+The full system is at `/ds` (unlinked, noindex) and its single source is
 `src/lib/content/design-system.ts`. Read it before changing anything visual.
 
 The rules most often broken:

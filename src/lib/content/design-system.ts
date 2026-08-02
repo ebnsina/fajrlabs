@@ -1,5 +1,5 @@
 /**
- * The design system, written once and used twice: rendered on /design, and
+ * The design system, written once and used twice: rendered on /ds, and
  * serialised by the copy button so it can be handed to a model.
  *
  * The serialised form is a DESIGN.md — YAML front matter carrying the tokens a
