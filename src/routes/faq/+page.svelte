@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { HugeiconsIcon, PlusSignIcon } from '#lib/icons.js';
+	import { HugeiconsIcon, PlusSignIcon, MinusSignIcon } from '#lib/icons.js';
 	import Seo from '#lib/components/Seo.svelte';
 	import PageHeader from '#lib/components/PageHeader.svelte';
 	import Section from '#lib/components/Section.svelte';
@@ -40,9 +40,17 @@
 				<details name="faq">
 					<summary>
 						<span class="question">{item.question}</span>
-						<span class="marker" aria-hidden="true"
-							><HugeiconsIcon icon={PlusSignIcon} size={15} strokeWidth={1.8} /></span
-						>
+						<!-- Both glyphs are stacked and cross-faded, so the square never
+						     moves. Rotating a plus into a minus is not possible; rotating
+						     the box with it turned it into a diamond. -->
+						<span class="marker" aria-hidden="true">
+							<span class="glyph plus">
+								<HugeiconsIcon icon={PlusSignIcon} size={15} strokeWidth={1.8} />
+							</span>
+							<span class="glyph minus">
+								<HugeiconsIcon icon={MinusSignIcon} size={15} strokeWidth={1.8} />
+							</span>
+						</span>
 					</summary>
 					<p>{item.answer}</p>
 				</details>
@@ -106,9 +114,18 @@
 		height: 26px;
 		border: 1px solid var(--rule);
 		color: var(--muted);
-		transition:
-			transform var(--slow) var(--ease),
-			border-color var(--fast) var(--ease);
+		transition: border-color var(--fast) var(--ease);
+	}
+
+	.glyph {
+		grid-area: 1 / 1;
+		display: grid;
+		place-items: center;
+		transition: opacity var(--fast) var(--ease);
+	}
+
+	.minus {
+		opacity: 0;
 	}
 
 	summary:hover .marker {
@@ -116,8 +133,15 @@
 	}
 
 	details[open] .marker {
-		transform: rotate(135deg);
 		border-color: var(--rule-strong);
+	}
+
+	details[open] .plus {
+		opacity: 0;
+	}
+
+	details[open] .minus {
+		opacity: 1;
 	}
 
 	details p {

@@ -14,7 +14,8 @@ export const changelog: ChangelogEntry[] = [
 		changes: [
 			{ kind: 'Added', note: 'Why this studio exists — what a written-down standard is for' },
 			{ kind: 'Added', note: 'What we do differently, and what it costs' },
-			{ kind: 'Changed', note: 'Writing is a grid of cards, each with artwork of its own' }
+			{ kind: 'Changed', note: 'Writing is a grid of cards, each with artwork of its own' },
+			{ kind: 'Fixed', note: 'An open question showed a tilted cross. It now shows a minus' }
 		]
 	},
 	{

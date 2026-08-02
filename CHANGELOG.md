@@ -28,6 +28,13 @@ this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
   of rules. The artwork is the card's edge, so there is no border and no
   background change marking the same edge twice.
 
+### Fixed
+
+- Opening a question on `/faq` rotated the marker 135°, which turned the square
+  into a diamond and the plus into a tilted cross. The square now holds still
+  and the plus cross-fades to a minus — a plus cannot be rotated into a minus,
+  so both glyphs are stacked instead.
+
 ## [0.7.6] — 2026-08-02
 
 ### Added
