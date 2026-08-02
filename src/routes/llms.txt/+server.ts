@@ -67,8 +67,9 @@ ${publishedPosts.length ? `\n## Writing\n\n${publishedPosts.map((p) => `- [${p.t
 ## Contact
 
 Email: ${site.email}
-WhatsApp: ${site.whatsapp.display}
+WhatsApp: ${site.whatsapp.display} — ${site.whatsapp.href}
 Location: ${site.location}
+Languages: English and Bengali. Another can be asked for.
 Replies within one working day.
 `;
 

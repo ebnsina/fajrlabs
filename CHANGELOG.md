@@ -14,11 +14,18 @@ this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 - The WhatsApp number in the details list on About, next to the email, so both
   ways of reaching the studio sit together rather than only on Contact.
 
+- WhatsApp in the structured data, as a `ContactPoint` on the organisation and a
+  `ContactPage` on Contact. It is described as a messaging contact carrying a
+  `url`, not a bare `telephone`, so it is not read as a call line. `/llms.txt`
+  now carries the link as well as the number.
+
 ### Changed
 
 - Languages on About read as a closed list of two. It now invites the reader to
   ask about another, which is an opening rather than a limit — and stops short
   of claiming fluency the studio has not stated.
+- `site.whatsapp` gained `tel`, the E.164 form, because structured data and
+  dialers reject the spaced display version.
 
 ## [0.7.5] — 2026-08-02
 

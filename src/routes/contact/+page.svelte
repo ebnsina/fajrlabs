@@ -18,11 +18,31 @@
 	const fields = $derived(enquiryForm.fields);
 	const result = $derived(enquiryForm.result);
 	const sending = $derived(enquiryForm.pending > 0);
+
+	// Names both ways of reaching the studio where a machine will read them.
+	const contactSchema = [
+		{
+			'@type': 'ContactPage',
+			'@id': `${site.url}/contact#page`,
+			name: 'Start a project',
+			about: { '@id': `${site.url}/#organization` },
+			mainEntity: {
+				'@type': 'ContactPoint',
+				contactType: 'sales',
+				email: site.email,
+				telephone: site.whatsapp.tel,
+				url: site.whatsapp.href,
+				availableLanguage: ['English', 'Bengali'],
+				areaServed: 'Worldwide'
+			}
+		}
+	];
 </script>
 
 <Seo
 	title="Start a project"
 	description="Tell us what you are trying to build. Half an hour on a call, no charge and no obligation — and a reply within one working day."
+	schema={contactSchema}
 />
 
 <PageHeader

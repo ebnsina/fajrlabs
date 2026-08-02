@@ -53,6 +53,20 @@
 			description: site.description,
 			foundingDate: site.founded,
 			logo: new URL('/icon-512.png', site.url).href,
+			// The number is for WhatsApp, so it is described as a messaging contact
+			// rather than a bare telephone, which would invite calls instead.
+			contactPoint: [
+				{
+					'@type': 'ContactPoint',
+					contactType: 'customer support',
+					email: site.email,
+					telephone: site.whatsapp.tel,
+					url: site.whatsapp.href,
+					availableLanguage: ['English', 'Bengali'],
+					areaServed: 'Worldwide'
+				}
+			],
+			sameAs: [site.whatsapp.href],
 			// The studio's defining characteristic, stated where machines can read it.
 			knowsAbout: [
 				'Custom software development',

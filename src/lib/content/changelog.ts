@@ -13,7 +13,11 @@ export const changelog: ChangelogEntry[] = [
 		summary: 'Easier to reach us, in more languages.',
 		changes: [
 			{ kind: 'Added', note: 'The WhatsApp number in the details on About' },
-			{ kind: 'Changed', note: 'Languages now invites you to ask, rather than reading as a limit' }
+			{ kind: 'Changed', note: 'Languages now invites you to ask, rather than reading as a limit' },
+			{
+				kind: 'Added',
+				note: 'WhatsApp where search engines and language models can read it, so they can pass it on'
+			}
 		]
 	},
 	{
