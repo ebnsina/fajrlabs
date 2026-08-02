@@ -104,7 +104,77 @@ svg {
 	max-width: 100%;
 }
 
+/*
+ * View transitions.
+ *
+ * Both the page cross-fade and the theme wipe animate the same `root` snapshot,
+ * so each is scoped to a class the script adds for the duration. Without that
+ * they fight, and the theme wipe inherits a fade it should not have.
+ *
+ * Two things must be set on every snapshot:
+ *
+ * `background-color`, because a view transition replaces the live page with
+ * pictures of it. Whatever shows through a partly transparent one is the bare
+ * browser canvas — black under a dark colour-scheme. That is the flash.
+ *
+ * `mix-blend-mode: normal`, because the default is `plus-lighter`. It is right
+ * for a plain cross-fade and wrong for anything else: with the wipe it would
+ * add the two themes together where they overlap and blow out to white.
+ */
+html.nav-vt::view-transition-old(root),
+html.nav-vt::view-transition-new(root),
+html.theme-vt::view-transition-old(root),
+html.theme-vt::view-transition-new(root) {
+	mix-blend-mode: normal;
+	background-color: var(--paper);
+}
+
+html.nav-vt::view-transition-old(root) {
+	animation: nav-out 190ms var(--ease) both;
+}
+
+html.nav-vt::view-transition-new(root) {
+	animation: nav-in 260ms var(--ease) both;
+}
+
+@keyframes nav-out {
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes nav-in {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+}
+
+/*
+ * The theme wipe is a clip-path on the incoming snapshot, animated from the
+ * script because the origin is only known at the moment of the press. Neither
+ * side fades: the new theme is cut open over the old, which stays put.
+ */
+html.theme-vt::view-transition-old(root),
+html.theme-vt::view-transition-new(root) {
+	animation: none;
+}
+
+html.theme-vt::view-transition-old(root) {
+	z-index: 1;
+}
+
+html.theme-vt::view-transition-new(root) {
+	z-index: 2;
+}
+
 @media (prefers-reduced-motion: reduce) {
+	::view-transition-group(*),
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation: none !important;
+	}
+
 	html {
 		scroll-behavior: auto;
 	}

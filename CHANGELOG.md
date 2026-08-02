@@ -7,6 +7,33 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.0] — 2026-08-02
+
+### Added
+
+- A spatial reveal on the appearance switch. The new theme is clipped open as a
+  circle growing from the button, so the change reads as coming from the control
+  that was pressed. The origin is the button's own centre rather than the
+  pointer, so a keyboard press does not wipe in from the top-left corner.
+- The cross-page fade is back, with the cause of the flash actually fixed:
+  every snapshot now carries `background-color`. A view transition replaces the
+  live page with pictures of it, and whatever shows through a partly transparent
+  one is the bare browser canvas — black under a dark colour-scheme. Painting
+  the snapshots means there is nothing to see through.
+- `mix-blend-mode: normal` on the snapshots. The default is `plus-lighter`,
+  which suits a plain cross-fade and would have blown the theme wipe out to
+  white where the two themes overlapped.
+- Page and theme transitions are scoped by a class each, because both animate
+  the same `root` snapshot and would otherwise inherit each other's styles.
+
+### Fixed
+
+- The reveal circle opened from the middle of the page instead of the button on
+  any screen with a device pixel ratio above 1 — every recent phone, and most
+  laptops. The snapshot is sized in device pixels, so a coordinate given in
+  pixels lands at half its intended position. Every value in the clip is now a
+  percentage, which resolves against the same box whatever its scale.
+
 ## [0.8.1] — 2026-08-02
 
 ### Fixed

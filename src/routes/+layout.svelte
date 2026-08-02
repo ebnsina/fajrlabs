@@ -3,19 +3,31 @@
 	import SiteHeader from '#lib/components/SiteHeader.svelte';
 	import SiteFooter from '#lib/components/SiteFooter.svelte';
 	import Cursor from '#lib/components/Cursor.svelte';
+	import { onNavigate } from '$app/navigation';
+	import { getMotionLevel } from '#lib/motion.js';
 
 	let { children } = $props();
 
 	/*
-	 * There is deliberately no view transition here.
-	 *
-	 * A cross-fade between pages replaces the live content with snapshots, and
-	 * anything showing through underneath is the page background — black in the
-	 * dark theme. Any frame where those snapshots are not fully opaque flashes
-	 * black, which is what iOS was doing. Two attempts to tune the timing did
-	 * not settle it, and a decorative cross-fade is not worth a visible fault on
-	 * the device most people will use. Navigation is instant instead.
+	 * Cross-fades between pages. The class scopes the styles to a navigation, so
+	 * they do not also catch the theme wipe — both animate the same `root`
+	 * snapshot. See layout.css for why each snapshot carries its own background.
 	 */
+	onNavigate((navigation) => {
+		if (!document.startViewTransition) return;
+		if (getMotionLevel() === 'none') return;
+
+		const root = document.documentElement;
+		root.classList.add('nav-vt');
+
+		return new Promise((resolve) => {
+			const transition = document.startViewTransition(async () => {
+				resolve();
+				await navigation.complete;
+			});
+			transition.finished.finally(() => root.classList.remove('nav-vt'));
+		});
+	});
 </script>
 
 <a class="skip" href="#main">Skip to content</a>

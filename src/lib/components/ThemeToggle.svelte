@@ -3,6 +3,16 @@
 	import { theme } from '#lib/theme.svelte.js';
 
 	const isDark = $derived(theme.current === 'dark');
+
+	/*
+	 * The reveal grows from the button itself, not the pointer. A keyboard press
+	 * reports 0,0 as its coordinates, which would wipe in from the top-left
+	 * corner and look like a different effect entirely.
+	 */
+	function toggle(event: MouseEvent) {
+		const box = (event.currentTarget as HTMLElement).getBoundingClientRect();
+		theme.toggle({ x: box.left + box.width / 2, y: box.top + box.height / 2 });
+	}
 </script>
 
 <!--
@@ -11,7 +21,7 @@
 -->
 <button
 	type="button"
-	onclick={() => theme.toggle()}
+	onclick={toggle}
 	title={isDark ? 'Switch to light appearance' : 'Switch to dark appearance'}
 >
 	<span class="icon" aria-hidden="true">

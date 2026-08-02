@@ -8,6 +8,18 @@ export type ChangelogEntry = {
 /** Newest first. Mirrors CHANGELOG.md — keep the two in step. */
 export const changelog: ChangelogEntry[] = [
 	{
+		version: '0.9.0',
+		date: '2026-08-02',
+		summary: 'Light and dark now open from the switch.',
+		changes: [
+			{
+				kind: 'Added',
+				note: 'Changing appearance sweeps out from the button as a circle, rather than snapping'
+			},
+			{ kind: 'Added', note: 'A short fade between pages, back again and without the flicker' }
+		]
+	},
+	{
 		version: '0.8.1',
 		date: '2026-08-02',
 		summary: 'No more flicker when you move between pages.',
