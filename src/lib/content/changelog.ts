@@ -8,6 +8,22 @@ export type ChangelogEntry = {
 /** Newest first. Mirrors CHANGELOG.md — keep the two in step. */
 export const changelog: ChangelogEntry[] = [
 	{
+		version: '0.10.0',
+		date: '2026-08-02',
+		summary: 'The design system is a file an agent can read.',
+		changes: [
+			{
+				kind: 'Changed',
+				note: 'The design page now copies a DESIGN.md, the format Google Labs published'
+			},
+			{
+				kind: 'Added',
+				note: 'Elevation, shapes, and a do and do-not list, which were never written down'
+			},
+			{ kind: 'Fixed', note: 'The motion rules described a failsafe that no longer exists' }
+		]
+	},
+	{
 		version: '0.9.0',
 		date: '2026-08-02',
 		summary: 'Light and dark now open from the switch.',

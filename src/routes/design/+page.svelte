@@ -29,14 +29,14 @@
 
 <Seo
 	title="Design system"
-	description="The rules this site is built on, in a form you can hand to a language model."
+	description="The rules this site is built on, as a DESIGN.md you can hand to a coding agent."
 	noindex
 />
 
 <PageHeader
 	eyebrow="Reference"
 	title="The design system."
-	standfirst="Every rule this site is built on, written once and used twice: rendered below, and copied as Markdown so you can hand it to a model and get back something that matches."
+	standfirst="Every rule this site is built on, written once and used twice: rendered below, and copied as a DESIGN.md — tokens a machine can read, then the reasoning behind them — so you can hand it to a coding agent and get back something that matches."
 >
 	{#snippet actions()}
 		<button type="button" class="copy" onclick={copy}>
@@ -48,11 +48,11 @@
 			{:else if failed}
 				Press ⌘C below
 			{:else}
-				Copy as Markdown
+				Copy as DESIGN.md
 			{/if}
 		</button>
 		<span class="status" role="status" aria-live="polite">
-			{#if copied}The design system is on your clipboard.{/if}
+			{#if copied}The DESIGN.md is on your clipboard.{/if}
 			{#if failed}Copying was blocked, so the text is selected below instead.{/if}
 		</span>
 	{/snippet}
@@ -151,9 +151,22 @@
 	</ul>
 </Section>
 
-<Section label="Motion">
+<Section label="Elevation &amp; depth">
+	<p class="note">{designSystem.elevation.note}</p>
+	<ul class="principles">
+		{#each designSystem.elevation.levels as level (level.title)}
+			<li>
+				<h3>{level.title}</h3>
+				<p>{level.detail}</p>
+			</li>
+		{/each}
+	</ul>
+</Section>
+
+<Section label="Shapes">
+	<p class="note">{designSystem.shapes.note}</p>
 	<ul class="rules">
-		{#each designSystem.motion.rules as rule (rule)}<li>{rule}</li>{/each}
+		{#each designSystem.shapes.rules as rule (rule)}<li>{rule}</li>{/each}
 	</ul>
 </Section>
 
@@ -165,6 +178,29 @@
 				<p>{component.detail}</p>
 			</li>
 		{/each}
+	</ul>
+</Section>
+
+<Section label="Do's and don'ts">
+	<div class="practice">
+		<div>
+			<h3>Do</h3>
+			<ul class="rules single">
+				{#each designSystem.practice.dos as rule (rule)}<li>{rule}</li>{/each}
+			</ul>
+		</div>
+		<div>
+			<h3>Don't</h3>
+			<ul class="rules single">
+				{#each designSystem.practice.donts as rule (rule)}<li>{rule}</li>{/each}
+			</ul>
+		</div>
+	</div>
+</Section>
+
+<Section label="Motion">
+	<ul class="rules">
+		{#each designSystem.motion.rules as rule (rule)}<li>{rule}</li>{/each}
 	</ul>
 </Section>
 
@@ -180,11 +216,12 @@
 	</ul>
 </Section>
 
-<Section label="Raw Markdown">
+<Section label="The file">
 	<p class="note">
-		The same text the button copies. Select and copy it by hand if the clipboard is blocked.
+		The same file the button copies, in the DESIGN.md format. Select and copy it by hand if the
+		clipboard is blocked.
 	</p>
-	<textarea readonly rows="30" aria-label="Design system as Markdown"
+	<textarea readonly rows="30" aria-label="The design system as a DESIGN.md file"
 		>{designSystemMarkdown()}</textarea
 	>
 </Section>
@@ -319,6 +356,33 @@
 	.rules li {
 		font-size: 15px;
 		color: var(--muted);
+	}
+
+	.practice {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 30px 48px;
+	}
+
+	@media (min-width: 720px) {
+		.practice {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	.practice h3 {
+		margin: 0 0 14px;
+		font-family: var(--font-mono);
+		font-size: 10.5px;
+		font-weight: 400;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--faint);
+	}
+
+	/* Already in two columns; the rules list must not split again inside them. */
+	.rules.single {
+		grid-template-columns: minmax(0, 1fr);
 	}
 
 	.scroll {

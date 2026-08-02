@@ -7,6 +7,39 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.0] — 2026-08-02
+
+### Changed
+
+- `/design` now copies a **DESIGN.md** rather than freeform Markdown — the
+  format at github.com/google-labs-code/design.md. YAML front matter carrying
+  the tokens a machine reads, then the reasoning, in that spec's eight sections
+  in its order. Verified with the official linter: **0 errors**, and it exports
+  cleanly to `css-vars`, `tailwind` and `dtcg`.
+- The page renders those sections in the same order as the file, so the two
+  cannot drift apart.
+
+### Added
+
+- **Elevation & Depth** and **Shapes**, neither of which had ever been written
+  down. `rounded` is declared in the front matter's `omitted` list with a
+  reason, which is the format's way of saying "square on purpose" rather than
+  "forgot to define".
+- **Do's and Don'ts** — the guardrails, each one written after getting it wrong
+  once: prefix before standard property, never mark an edge twice, never animate
+  `autoAlpha`, never a `from` tween on something already visible.
+- Machine-readable typography levels and component tokens. The width axis is
+  carried as `fontVariation`, which the format has a key for.
+
+### Fixed
+
+- The motion rules still described a 1.2s failsafe that removes an
+  `html.motion` class. That mechanism was deleted in 0.8.1, so the design system
+  was documenting something the site no longer does.
+- `button-ghost` and `service-row` declared a `transparent` background, which
+  the linter reads as `#00000000` and reports as failing contrast. They name the
+  paper colour they actually sit on, so the check measures something real.
+
 ## [0.9.0] — 2026-08-02
 
 ### Added
