@@ -8,6 +8,21 @@ export type ChangelogEntry = {
 /** Newest first. Mirrors CHANGELOG.md — keep the two in step. */
 export const changelog: ChangelogEntry[] = [
 	{
+		version: '0.7.5',
+		date: '2026-08-02',
+		summary: 'Pictures of Safar running.',
+		changes: [
+			{
+				kind: 'Added',
+				note: 'Screenshots on the Safar case study, captioned with what each one shows'
+			},
+			{
+				kind: 'Changed',
+				note: 'A case study now shares its own picture when linked, not the studio card'
+			}
+		]
+	},
+	{
 		version: '0.7.4',
 		date: '2026-08-02',
 		summary: 'Safar is open to try.',

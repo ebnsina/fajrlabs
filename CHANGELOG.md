@@ -7,6 +7,17 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.5] — 2026-08-02
+
+### Added
+
+- Screenshots on the Safar case study: the search results, and a trip with a
+  seat chosen. Each is captioned with the claim it evidences — the fee sitting
+  beside the fare, and the ten-minute seat hold — rather than being decoration.
+- An optional `image` on `Seo`, so a page can override the social card. A case
+  study now shares its own screenshot when linked, at the picture's real
+  dimensions.
+
 ## [0.7.4] — 2026-08-02
 
 ### Added

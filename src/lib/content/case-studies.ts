@@ -8,6 +8,8 @@ export type CaseStudy = {
 	sector: string;
 	/** Public URL, when there is something to look at. */
 	url?: string;
+	/** Screenshots of the thing running. Captions say what the picture proves. */
+	shots?: { src: string; width: number; height: number; alt: string; caption: string }[];
 	problem: string[];
 	decisions: { title: string; detail: string }[];
 	standing: string;
@@ -21,6 +23,24 @@ export const caseStudies: CaseStudy[] = [
 		status: 'Our own product, in development',
 		sector: 'Travel booking',
 		url: 'https://safar7.vercel.app',
+		shots: [
+			{
+				src: '/case-studies/safar-search.jpg',
+				width: 1440,
+				height: 757,
+				alt: 'Safar search results for Dhaka to Cox’s Bazar: sixteen journeys listed with operator, departure and arrival times, duration, fare and seats left.',
+				caption:
+					'One search, sixteen journeys. Each row carries the operator, both times, how long it takes, the fare and the seats left — so the comparison happens in the list, not in your head.'
+			},
+			{
+				src: '/case-studies/safar-seats.jpg',
+				width: 1440,
+				height: 757,
+				alt: 'A Safar trip page with seat 2A chosen. The panel shows fares ৳1,151, booking fee ৳29, total ৳1,180, and the line “seats held ten minutes”.',
+				caption:
+					'The fee is on the screen next to the fare, not revealed at the end. Underneath, the seat is held for ten minutes while you fill the form in.'
+			}
+		],
 		problem: [
 			'Booking a journey across Bangladesh means visiting three different kinds of website. Bus operators sell their own seats. The railway sells its own. Airlines sell theirs. Nobody shows you all three side by side, so working out whether to take the overnight coach or the morning flight means opening half a dozen tabs and doing the comparison in your head.',
 			'The second problem is the price. The number that gets you to click is rarely the number you pay. Fees appear at the last step, once you have spent ten minutes entering passenger details and feel committed.',

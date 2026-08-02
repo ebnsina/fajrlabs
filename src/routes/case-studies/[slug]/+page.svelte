@@ -11,7 +11,16 @@
 	const item = $derived(data.item);
 </script>
 
-<Seo title={item.name} description={item.oneLine} />
+<Seo
+	title={item.name}
+	description={item.oneLine}
+	image={item.shots?.[0] && {
+		src: item.shots[0].src,
+		width: item.shots[0].width,
+		height: item.shots[0].height,
+		alt: item.shots[0].alt
+	}}
+/>
 
 <PageHeader eyebrow="Case studies" title={item.name} standfirst={item.oneLine} />
 
@@ -59,6 +68,26 @@
 		{/each}
 	</ol>
 </Section>
+
+{#if item.shots?.length}
+	<Section label="What it looks like">
+		<div class="shots" {@attach reveal()}>
+			{#each item.shots as shot (shot.src)}
+				<figure>
+					<img
+						src={shot.src}
+						width={shot.width}
+						height={shot.height}
+						alt={shot.alt}
+						loading="lazy"
+						decoding="async"
+					/>
+					<figcaption>{shot.caption}</figcaption>
+				</figure>
+			{/each}
+		</div>
+	</Section>
+{/if}
 
 <Section label="Honestly">
 	<p class="standing" {@attach reveal()}>{item.standing}</p>
@@ -173,6 +202,30 @@
 
 	.decisions p {
 		margin: 7px 0 0;
+		font-size: 14.5px;
+		color: var(--muted);
+	}
+
+	.shots {
+		display: flex;
+		flex-direction: column;
+		gap: 44px;
+	}
+
+	figure {
+		margin: 0;
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+		border: 1px solid var(--rule);
+	}
+
+	figcaption {
+		margin-top: 14px;
+		max-width: var(--measure);
 		font-size: 14.5px;
 		color: var(--muted);
 	}
