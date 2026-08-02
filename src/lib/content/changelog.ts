@@ -8,6 +8,12 @@ export type ChangelogEntry = {
 /** Newest first. Mirrors CHANGELOG.md — keep the two in step. */
 export const changelog: ChangelogEntry[] = [
 	{
+		version: '0.8.1',
+		date: '2026-08-02',
+		summary: 'No more flicker when you move between pages.',
+		changes: [{ kind: 'Fixed', note: 'Pages flashed as they loaded, most visibly on iPhone' }]
+	},
+	{
 		version: '0.8.0',
 		date: '2026-08-02',
 		summary: 'Writing, with the first two pieces.',

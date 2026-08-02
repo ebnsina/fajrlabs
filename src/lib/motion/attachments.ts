@@ -1,6 +1,23 @@
 import type { Attachment } from 'svelte/attachments';
 import { loadEngine, getMotionLevel } from './engine.js';
 
+/** Where a scroll reveal begins, shared by the tween and the check below. */
+const START = 'top 88%';
+const START_RATIO = 0.88;
+
+/**
+ * True when the element is already past the point its reveal would fire.
+ *
+ * These must not animate. A `from` tween renders its start state the moment it
+ * is built, which is after the browser has painted — so an element that is
+ * already on screen goes visible, snaps to transparent, then fades back in.
+ * That is the flash on navigation, and it is worst where the engine is already
+ * cached, because the tween lands a single frame late instead of many.
+ */
+function alreadyOnScreen(node: HTMLElement): boolean {
+	return node.getBoundingClientRect().top < window.innerHeight * START_RATIO;
+}
+
 type RevealOptions = {
 	/** Stagger before this element animates, in milliseconds. */
 	delay?: number;
@@ -20,6 +37,7 @@ export function reveal({
 }: RevealOptions = {}): Attachment<HTMLElement> {
 	return (node) => {
 		if (getMotionLevel() === 'none') return;
+		if (alreadyOnScreen(node)) return;
 
 		let cleanup: (() => void) | undefined;
 		let cancelled = false;
@@ -37,7 +55,7 @@ export function reveal({
 				ease: 'power3.out',
 				delay: delay / 1000,
 				stagger: children ? 0.05 * engine.scale : 0,
-				scrollTrigger: { trigger: node, start: 'top 88%', once: true }
+				scrollTrigger: { trigger: node, start: START, once: true }
 			});
 
 			cleanup = () => {
@@ -76,31 +94,68 @@ export function splitReveal({
 }: SplitOptions = {}): Attachment<HTMLElement> {
 	return (node) => {
 		if (getMotionLevel() === 'none') return;
+		// A scroll reveal on something already in view would only flash it.
+		if (!onLoad && alreadyOnScreen(node)) return;
 
 		let cleanup: (() => void) | undefined;
 		let cancelled = false;
 
-		loadEngine().then((engine) => {
-			if (!engine || cancelled) return;
+		const restore = () => {
+			node.style.removeProperty('opacity');
+			node.style.removeProperty('transform');
+			node.style.removeProperty('will-change');
+		};
 
-			const tween = engine.gsap.from(node, {
-				y: 26,
-				opacity: 0,
-				duration: 0.9 * engine.scale,
-				ease: 'power3.out',
-				delay: delay / 1000,
-				scrollTrigger: onLoad ? undefined : { trigger: node, start: 'top 88%', once: true }
-			});
+		// The heading is on screen from the start, so it cannot be skipped the way
+		// the others are. Its start state is set here instead — synchronously,
+		// inside the attachment, which runs before the browser paints. Leaving it
+		// to the tween means one painted visible frame first, and that frame is
+		// the flash. Anything set here must be guaranteed to come back off.
+		let failsafe: ReturnType<typeof setTimeout> | undefined;
+
+		if (onLoad) {
+			node.style.opacity = '0';
+			node.style.transform = 'translateY(26px)';
+			node.style.willChange = 'opacity, transform';
+			// If the engine never answers at all, show the heading anyway.
+			failsafe = setTimeout(restore, 1200);
+		}
+
+		loadEngine().then((engine) => {
+			clearTimeout(failsafe);
+			// Motion off, chunk blocked, or the element already gone: a heading must
+			// never be left sitting at zero opacity.
+			if (!engine || cancelled) {
+				restore();
+				return;
+			}
+
+			const tween = engine.gsap.fromTo(
+				node,
+				{ y: 26, opacity: 0 },
+				{
+					y: 0,
+					opacity: 1,
+					duration: 0.9 * engine.scale,
+					ease: 'power3.out',
+					delay: delay / 1000,
+					clearProps: 'opacity,transform,willChange',
+					scrollTrigger: onLoad ? undefined : { trigger: node, start: START, once: true }
+				}
+			);
 
 			cleanup = () => {
 				tween.scrollTrigger?.kill();
 				tween.kill();
+				restore();
 			};
 		});
 
 		return () => {
 			cancelled = true;
+			clearTimeout(failsafe);
 			cleanup?.();
+			restore();
 		};
 	};
 }

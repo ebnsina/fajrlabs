@@ -22,20 +22,6 @@
 				document.documentElement.dataset.theme = 'light';
 			}
 		</script>
-		<script>
-			// Decide up front whether this visitor gets motion, and guarantee that a
-			// failed or slow script can never leave content invisible.
-			try {
-				var c = navigator.connection || {};
-				var slow = c.saveData || /(^|-)2g$/.test(c.effectiveType || '');
-				if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !slow) {
-					document.documentElement.classList.add('motion');
-					setTimeout(function () {
-						document.documentElement.classList.remove('motion');
-					}, 1200);
-				}
-			} catch {}
-		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

@@ -7,6 +7,34 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.1] — 2026-08-02
+
+### Fixed
+
+- Content flashed on navigation, worst on iOS. Three causes, all opacity:
+  - Reveals were `gsap.from(..., { opacity: 0 })`, and a `from` tween applies
+    its start state when it is built — after the browser has painted. Anything
+    already on screen went visible, snapped to transparent, then faded back in.
+    Elements already past their trigger are now left alone entirely, and the
+    heading, which cannot be skipped, has its start state set synchronously in
+    the attachment, before paint.
+  - The page transition faded the outgoing page out in 90ms while fading the
+    incoming one in over 220ms, so for a moment neither was opaque and the
+    backdrop showed through. The outgoing page now holds and the new one covers
+    it.
+  - iOS 18 supports view transitions, so an iPhone ran the crossfade _and_ the
+    reveal on top of each other.
+- The page transition ignored data-saver and 2G, where all other motion is
+  switched off. It now checks the same capability tier as everything else.
+
+### Removed
+
+- A script in `app.html` that added an `html.motion` class and removed it after
+  1.2s as a failsafe against content being left invisible. Nothing in the CSS
+  ever read the class, so it protected nothing. The guarantee now sits in the
+  one place that hides anything, with a timeout that restores the heading if the
+  motion engine never answers.
+
 ## [0.8.0] — 2026-08-02
 
 ### Added

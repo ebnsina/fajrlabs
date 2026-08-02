@@ -4,12 +4,16 @@
 	import SiteHeader from '#lib/components/SiteHeader.svelte';
 	import SiteFooter from '#lib/components/SiteFooter.svelte';
 	import Cursor from '#lib/components/Cursor.svelte';
+	import { getMotionLevel } from '#lib/motion.js';
 
 	let { children } = $props();
 
-	// Cross-fade between pages where the browser supports it.
+	// Cross-fade between pages where the browser supports it. Skipped whenever
+	// motion is off, which the transition would otherwise ignore entirely — and
+	// it is opacity on every element at once, the most obvious thing to suppress.
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
+		if (getMotionLevel() === 'none') return;
 
 		return new Promise((resolve) => {
 			document.startViewTransition(async () => {
