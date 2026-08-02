@@ -29,6 +29,13 @@ this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Removed
 
+- The cross-page fade, and the View Transitions API call behind it. A view
+  transition replaces the live content with snapshots, and whatever shows
+  through underneath is the page background — black in the dark theme. Any
+  frame where the snapshots are not fully opaque flashes black, which is what
+  iOS was reporting. Two attempts at tuning the timing did not settle it, and a
+  decorative fade is not worth a visible fault on the device most people use.
+  Navigation is instant instead.
 - A script in `app.html` that added an `html.motion` class and removed it after
   1.2s as a failsafe against content being left invisible. Nothing in the CSS
   ever read the class, so it protected nothing. The guarantee now sits in the

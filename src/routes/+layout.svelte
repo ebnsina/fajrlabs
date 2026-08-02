@@ -1,27 +1,21 @@
 <script lang="ts">
 	import './layout.css';
-	import { onNavigate } from '$app/navigation';
 	import SiteHeader from '#lib/components/SiteHeader.svelte';
 	import SiteFooter from '#lib/components/SiteFooter.svelte';
 	import Cursor from '#lib/components/Cursor.svelte';
-	import { getMotionLevel } from '#lib/motion.js';
 
 	let { children } = $props();
 
-	// Cross-fade between pages where the browser supports it. Skipped whenever
-	// motion is off, which the transition would otherwise ignore entirely — and
-	// it is opacity on every element at once, the most obvious thing to suppress.
-	onNavigate((navigation) => {
-		if (!document.startViewTransition) return;
-		if (getMotionLevel() === 'none') return;
-
-		return new Promise((resolve) => {
-			document.startViewTransition(async () => {
-				resolve();
-				await navigation.complete;
-			});
-		});
-	});
+	/*
+	 * There is deliberately no view transition here.
+	 *
+	 * A cross-fade between pages replaces the live content with snapshots, and
+	 * anything showing through underneath is the page background — black in the
+	 * dark theme. Any frame where those snapshots are not fully opaque flashes
+	 * black, which is what iOS was doing. Two attempts to tune the timing did
+	 * not settle it, and a decorative cross-fade is not worth a visible fault on
+	 * the device most people will use. Navigation is instant instead.
+	 */
 </script>
 
 <a class="skip" href="#main">Skip to content</a>

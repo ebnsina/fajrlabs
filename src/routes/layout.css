@@ -104,34 +104,7 @@ svg {
 	max-width: 100%;
 }
 
-/* Cross-page fade, used with the View Transitions API where supported. */
-@keyframes fade-in {
-	from {
-		opacity: 0;
-	}
-}
-
-/*
- * The outgoing page holds at full opacity and the incoming one fades in over
- * the top of it. Fading both at once leaves a moment where neither is opaque
- * and the backdrop shows through — a flash on every navigation, worst on iOS,
- * where the old fading out faster than the new faded in made the dip plain.
- */
-::view-transition-old(root) {
-	animation: none;
-	opacity: 1;
-}
-
-::view-transition-new(root) {
-	animation: fade-in 200ms var(--ease) both;
-}
-
 @media (prefers-reduced-motion: reduce) {
-	::view-transition-old(root),
-	::view-transition-new(root) {
-		animation: none;
-	}
-
 	html {
 		scroll-behavior: auto;
 	}
