@@ -91,7 +91,6 @@
 	.steps h2 {
 		margin: 0;
 		font-size: clamp(21px, 2.7vw, 28px);
-		font-stretch: 90%;
 		letter-spacing: -0.022em;
 		line-height: 1.12;
 	}
@@ -142,7 +141,6 @@
 	.promises h3 {
 		margin: 0;
 		font-size: 17px;
-		font-stretch: 92%;
 		letter-spacing: -0.016em;
 	}
 

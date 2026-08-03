@@ -5,9 +5,54 @@
 
 @plugin '@tailwindcss/forms';
 
+/*
+ * PolySans, self-hosted, for the wordmark and every heading. Mona Sans keeps
+ * the body copy, Geist Mono the numbers and labels.
+ *
+ * These are the trial cuts: 68 glyphs, being A–Z, a–z, 0–9 and `. , ! ?`, with
+ * no apostrophe, dash, colon, ampersand or accent. Mona Sans follows in the
+ * stack so anything missing falls back per character rather than showing a
+ * blank box — it currently covers the quotation marks in one FAQ question and
+ * the plus in "18+". Replace these files with licensed cuts before launch.
+ *
+ * Static weights, so a size with no face resolves silently to the nearest one
+ * below. 400 is loaded for exactly that reason: without it the wordmark's
+ * "Labs" and the questions on /faq dropped to Slim 300.
+ */
+@font-face {
+	font-family: 'PolySans';
+	src: url('/fonts/polysans-700.woff2') format('woff2');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PolySans';
+	src: url('/fonts/polysans-600.woff2') format('woff2');
+	font-weight: 600;
+	font-display: swap;
+}
+
+/* Neutral. Without it a 400 request silently resolves to Slim, which is two
+   steps light — it caught the wordmark's "Labs" and the questions on /faq. */
+@font-face {
+	font-family: 'PolySans';
+	src: url('/fonts/polysans-400.woff2') format('woff2');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PolySans';
+	src: url('/fonts/polysans-300.woff2') format('woff2');
+	font-weight: 300;
+	font-display: swap;
+}
+
 @theme {
 	--font-sans: 'Mona Sans Variable', ui-sans-serif, system-ui, sans-serif;
 	--font-mono: 'Geist Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
+	--font-display: 'PolySans', 'Mona Sans Variable', ui-sans-serif, system-ui, sans-serif;
 }
 
 /*
@@ -87,7 +132,11 @@ a {
 	border-radius: 1px;
 }
 
-/* Mona Sans carries the hierarchy: bold display, regular body. */
+/* PolySans carries the headings; Mona Sans everything else. */
+:where(h1, h2, h3, h4) {
+	font-family: var(--font-display);
+}
+
 :where(h1, h2) {
 	font-weight: 700;
 	text-wrap: balance;

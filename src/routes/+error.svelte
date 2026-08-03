@@ -124,7 +124,6 @@
 		margin: 0;
 		max-width: 16ch;
 		font-size: clamp(34px, 5.6vw, 66px);
-		font-stretch: 86%;
 		letter-spacing: -0.034em;
 		line-height: 1;
 	}

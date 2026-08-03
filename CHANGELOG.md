@@ -7,6 +7,38 @@ the two in step.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project uses [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.11.0] — 2026-08-03
+
+### Changed
+
+- Headings and the wordmark are set in **PolySans** (Slim 300, Neutral 400,
+  Median 600, Inky 700), self-hosted and subset to Latin. Mona Sans keeps the
+  body copy and Geist Mono the numbers, so the display voice is now distinct
+  from the reading voice.
+- Tracking on the wordmark tightened from `0.04em` to `0.02em`, because the new
+  face sets wider than Mona Sans did at 88%.
+
+### Removed
+
+- All 25 `font-stretch` declarations on display type. PolySans ships as static
+  cuts with no width axis, so every one of them had become dead code. The single
+  remaining declaration is on the mobile nav, which is still Mona Sans.
+
+### Fixed
+
+- No 400 face was loaded at first, so anything asking for regular weight
+  resolved silently to Slim 300 — two steps too light. It caught the wordmark's
+  "Labs" and every question on `/faq`. Static cuts fail quietly like this;
+  Neutral 400 is now loaded explicitly.
+
+### Notes
+
+- The files in `static/fonts/` are **trial** cuts, carrying 68 glyphs and no
+  apostrophe, dash, colon or accent. Mona Sans backs them in the stack, so a
+  missing character falls back per character — currently the quotation marks in
+  one FAQ question and the plus in "18+". They must be replaced with licensed
+  cuts before launch.
+
 ## [0.10.0] — 2026-08-02
 
 ### Changed

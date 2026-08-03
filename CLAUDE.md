@@ -41,8 +41,11 @@ The rules most often broken:
 
 - **Monochrome, no exceptions.** No hue anywhere, including for state. Hierarchy
   comes from weight, width and space. If a fix seems to need colour, it does not.
-- Mona Sans for everything, using its width axis. Geist Mono only for numbers,
-  labels, metadata and tabular data.
+- PolySans for the wordmark and every heading; Mona Sans for body copy; Geist
+  Mono only for numbers, labels, metadata and tabular data. PolySans has no
+  width axis, so do not reach for `font-stretch` on display type — tracking does
+  that work now. The cuts in `static/fonts/` are **trial** files and must be
+  replaced with licensed ones before launch.
 - Whitespace before rules. Never a border _and_ a background change marking the
   same edge.
 - Vendor prefixes go **before** the standard property, or the minifier drops the

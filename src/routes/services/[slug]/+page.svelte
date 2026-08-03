@@ -180,8 +180,8 @@
 	}
 
 	.other-name {
+		font-family: var(--font-display);
 		font-size: 17px;
-		font-stretch: 92%;
 		letter-spacing: -0.016em;
 	}
 

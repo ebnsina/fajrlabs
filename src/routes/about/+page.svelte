@@ -116,7 +116,6 @@
 	.beliefs h2 {
 		margin: 0;
 		font-size: 17.5px;
-		font-stretch: 92%;
 		letter-spacing: -0.016em;
 	}
 
