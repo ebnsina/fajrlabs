@@ -28,10 +28,9 @@
 	.wordmark {
 		display: inline-flex;
 		align-items: center;
-		/* The display face, so the mark and the headings are the same voice. */
-		font-family: var(--font-display);
 		font-size: 18px;
-		letter-spacing: 0.02em;
+		font-stretch: 88%;
+		letter-spacing: 0.04em;
 		line-height: 1.4;
 		white-space: nowrap;
 	}

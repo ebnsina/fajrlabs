@@ -76,9 +76,9 @@
 	}
 
 	.name {
-		font-family: var(--font-display);
 		font-size: clamp(24px, 3.2vw, 34px);
 		font-weight: 700;
+		font-stretch: 90%;
 		letter-spacing: -0.026em;
 		line-height: 1.08;
 	}

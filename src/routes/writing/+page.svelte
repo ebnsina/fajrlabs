@@ -106,6 +106,7 @@
 		margin: 0;
 		max-width: 22ch;
 		font-size: clamp(19px, 2.1vw, 23px);
+		font-stretch: 91%;
 		letter-spacing: -0.022em;
 		line-height: 1.14;
 	}
@@ -123,6 +124,7 @@
 	.empty h2 {
 		margin: 0;
 		font-size: clamp(22px, 2.8vw, 30px);
+		font-stretch: 90%;
 		letter-spacing: -0.024em;
 	}
 

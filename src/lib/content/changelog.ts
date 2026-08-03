@@ -8,17 +8,6 @@ export type ChangelogEntry = {
 /** Newest first. Mirrors CHANGELOG.md — keep the two in step. */
 export const changelog: ChangelogEntry[] = [
 	{
-		version: '0.11.0',
-		date: '2026-08-03',
-		summary: 'A new face for the headings.',
-		changes: [
-			{
-				kind: 'Changed',
-				note: 'Headings and the wordmark are set in PolySans. Body text is unchanged'
-			}
-		]
-	},
-	{
 		version: '0.10.0',
 		date: '2026-08-02',
 		summary: 'The design system is a file an agent can read.',

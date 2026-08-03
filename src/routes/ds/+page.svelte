@@ -297,6 +297,7 @@
 	.principles h3 {
 		margin: 0;
 		font-size: 18px;
+		font-stretch: 92%;
 		letter-spacing: -0.016em;
 	}
 
@@ -322,6 +323,7 @@
 	.families h3 {
 		margin: 0;
 		font-size: 16.5px;
+		font-stretch: 94%;
 	}
 
 	.role {

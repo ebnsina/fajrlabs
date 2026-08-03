@@ -150,6 +150,7 @@
 		margin: 0;
 		max-width: 15ch;
 		font-size: clamp(40px, 7.2vw, 92px);
+		font-stretch: 86%;
 		letter-spacing: -0.038em;
 		line-height: 0.97;
 	}
@@ -180,6 +181,7 @@
 		margin: 0;
 		max-width: 20ch;
 		font-size: clamp(24px, 3.2vw, 36px);
+		font-stretch: 88%;
 		letter-spacing: -0.026em;
 		line-height: 1.08;
 	}
@@ -275,6 +277,7 @@
 	.process h3 {
 		margin: 0;
 		font-size: 18px;
+		font-stretch: 94%;
 		letter-spacing: -0.014em;
 	}
 

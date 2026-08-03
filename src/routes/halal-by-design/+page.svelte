@@ -142,6 +142,7 @@
 		margin: 0;
 		font-size: 18.5px;
 		font-weight: 600;
+		font-stretch: 92%;
 		letter-spacing: -0.016em;
 	}
 
@@ -189,6 +190,7 @@
 		margin: 0;
 		font-size: 17px;
 		font-weight: 600;
+		font-stretch: 94%;
 		letter-spacing: -0.014em;
 	}
 
@@ -250,10 +252,10 @@
 	}
 
 	.closing {
-		font-family: var(--font-display);
 		margin: 0;
 		max-width: 34ch;
 		font-size: clamp(20px, 2.6vw, 28px);
+		font-stretch: 90%;
 		letter-spacing: -0.022em;
 		line-height: 1.24;
 	}

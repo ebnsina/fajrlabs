@@ -111,6 +111,7 @@
 	h2 {
 		margin: 10px 0 18px;
 		font-size: clamp(21px, 2.4vw, 26px);
+		font-stretch: 90%;
 		letter-spacing: -0.022em;
 		line-height: 1.1;
 	}

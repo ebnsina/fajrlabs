@@ -54,6 +54,7 @@
 		margin: 0;
 		max-width: 22ch;
 		font-size: clamp(26px, 3.6vw, 40px);
+		font-stretch: 88%;
 		letter-spacing: -0.028em;
 		line-height: 1.06;
 	}

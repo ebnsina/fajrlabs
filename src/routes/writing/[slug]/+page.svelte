@@ -64,6 +64,7 @@
 	article h2 {
 		margin: 34px 0 12px;
 		font-size: clamp(19px, 2.1vw, 22px);
+		font-stretch: 92%;
 		letter-spacing: -0.018em;
 	}
 

@@ -83,6 +83,7 @@
 	h1 {
 		margin: 0;
 		font-size: clamp(34px, 5.4vw, 62px);
+		font-stretch: 86%;
 		letter-spacing: -0.032em;
 		line-height: 1.02;
 	}

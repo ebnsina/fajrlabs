@@ -196,6 +196,7 @@
 	.decisions h2 {
 		margin: 0;
 		font-size: 19px;
+		font-stretch: 92%;
 		letter-spacing: -0.018em;
 	}
 

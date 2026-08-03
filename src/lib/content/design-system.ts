@@ -21,6 +21,8 @@ export type TypeToken = {
 	fontWeight: number;
 	lineHeight: number;
 	letterSpacing: string;
+	/** Mona Sans is variable; the width axis does the work a display face would. */
+	fontVariation?: string;
 };
 
 export type Dimension = { name: string; value: string; use: string };
@@ -37,9 +39,9 @@ export const designSystem = {
 				'No hue is used anywhere, including for state and emphasis. If something needs to stand out, change its weight, size or surrounding space. This is a hard rule.'
 		},
 		{
-			title: 'Three faces, one job each',
+			title: 'One typeface, worked hard',
 			detail:
-				'PolySans sets the wordmark and every heading. Mona Sans takes all body copy. Geist Mono is reserved for numbers, labels, metadata and anything tabular. Nothing else is introduced.'
+				'Mona Sans carries everything, using its width axis (75–125) to do the job a second display family usually would. Geist Mono is reserved for numbers, labels, metadata and anything tabular.'
 		},
 		{
 			title: 'Space before lines',
@@ -86,16 +88,9 @@ export const designSystem = {
 	typography: {
 		families: [
 			{
-				name: 'PolySans',
-				role: 'The wordmark and every heading',
-				detail:
-					'Static cuts: Slim 300, Neutral 400, Median 600, Inky 700. No width axis, so headings are set at their natural width. Self-hosted, subset to Latin.'
-			},
-			{
 				name: 'Mona Sans Variable',
-				role: 'Body copy, and the fallback behind PolySans',
-				detail:
-					'Variable: weight 200–900, width 75–125. Self-hosted via Fontsource. It also supplies any character PolySans lacks.'
+				role: 'Everything that is not a number or a label',
+				detail: 'Variable: weight 200–900, width 75–125. Self-hosted via Fontsource.'
 			},
 			{
 				name: 'Geist Mono Variable',
@@ -111,22 +106,22 @@ export const designSystem = {
 		scale: [
 			{
 				role: 'Hero heading',
-				spec: 'clamp(40px, 7.2vw, 92px), PolySans Inky 700, tracking -0.038em, line-height 0.97'
+				spec: 'clamp(40px, 7.2vw, 92px), weight 700, width 86%, tracking -0.038em, line-height 0.97'
 			},
 			{
 				role: 'Page title',
-				spec: 'clamp(34px, 5.4vw, 62px), PolySans Inky 700, tracking -0.032em'
+				spec: 'clamp(34px, 5.4vw, 62px), weight 700, width 86%, tracking -0.032em'
 			},
 			{
 				role: 'Section heading',
-				spec: 'clamp(24px, 3.2vw, 36px), PolySans Inky 700, tracking -0.026em'
+				spec: 'clamp(24px, 3.2vw, 36px), weight 700, width 88%, tracking -0.026em'
 			},
 			{ role: 'Body', spec: '15–17px, weight 400, line-height 1.6, max-width 62ch' },
 			{ role: 'Rail label', spec: 'Geist Mono 10.5px, uppercase, 0.16em tracking, --faint' },
 			{ role: 'Button', spec: 'Geist Mono 11px, uppercase, 0.12em tracking' }
 		],
 		rules: [
-			'Headings are PolySans at 700, or 600 for the smaller levels. There is no width axis, so tracking does the tightening the width used to.',
+			'Headings are bold (700) and narrowed via the width axis; body text stays at the default width.',
 			'Emphasis inside a heading uses a lighter weight at full ink, never a lighter colour.',
 			'Numbers use font-variant-numeric: tabular-nums wherever they line up in columns.'
 		],
@@ -139,38 +134,42 @@ export const designSystem = {
 			{
 				name: 'headline-display',
 				role: 'Home hero only',
-				fontFamily: 'PolySans',
+				fontFamily: 'Mona Sans Variable',
 				fontSize: '92px',
 				fontWeight: 700,
 				lineHeight: 0.97,
-				letterSpacing: '-0.038em'
+				letterSpacing: '-0.038em',
+				fontVariation: "'wdth' 86"
 			},
 			{
 				name: 'headline-lg',
 				role: 'Page title',
-				fontFamily: 'PolySans',
+				fontFamily: 'Mona Sans Variable',
 				fontSize: '62px',
 				fontWeight: 700,
 				lineHeight: 1.02,
-				letterSpacing: '-0.032em'
+				letterSpacing: '-0.032em',
+				fontVariation: "'wdth' 86"
 			},
 			{
 				name: 'headline-md',
 				role: 'Section heading',
-				fontFamily: 'PolySans',
+				fontFamily: 'Mona Sans Variable',
 				fontSize: '36px',
 				fontWeight: 700,
 				lineHeight: 1.1,
-				letterSpacing: '-0.026em'
+				letterSpacing: '-0.026em',
+				fontVariation: "'wdth' 88"
 			},
 			{
 				name: 'headline-sm',
 				role: 'Card and row headings',
-				fontFamily: 'PolySans',
+				fontFamily: 'Mona Sans Variable',
 				fontSize: '23px',
 				fontWeight: 700,
 				lineHeight: 1.14,
-				letterSpacing: '-0.022em'
+				letterSpacing: '-0.022em',
+				fontVariation: "'wdth' 92"
 			},
 			{
 				name: 'body-lg',
@@ -375,7 +374,7 @@ export const designSystem = {
 		{
 			name: 'Wordmark',
 			detail:
-				'PolySans. Fajr in Inky 700, Labs in Neutral 400 at --muted. Hovering swaps Fajr for فَجْر in one grid cell, so nothing shifts.'
+				'Fajr in bold ink, Labs at regular weight in --muted. Hovering swaps Fajr for فَجْر in one grid cell, so nothing shifts.'
 		}
 	],
 
@@ -398,7 +397,7 @@ export const designSystem = {
 			'Do keep every corner square, including on anything new.',
 			'Do ship content visible and add motion on top of it.',
 			'Do give every control a visible focus ring and at least a 24×24 target.',
-			'Do use PolySans for headings and the wordmark, Geist Mono for numbers and labels, and Mona Sans for everything else.'
+			'Do use Geist Mono for numbers, labels and metadata, and Mona Sans for everything else.'
 		],
 		donts: [
 			'Do not introduce a hue, for any reason, including state, error and emphasis. If a fix seems to need colour, it does not.',
@@ -463,6 +462,7 @@ export function designSystemMarkdown(): string {
 		out.push(`    fontWeight: ${t.fontWeight}`);
 		out.push(`    lineHeight: ${t.lineHeight}`);
 		out.push(`    letterSpacing: ${t.letterSpacing}`);
+		if (t.fontVariation) out.push(`    fontVariation: "${t.fontVariation}"`);
 	}
 
 	out.push('spacing:');
